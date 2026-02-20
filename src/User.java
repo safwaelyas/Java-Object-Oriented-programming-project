@@ -5,13 +5,16 @@ private String name;
 private String email;
 private String password;
 private int nOb;
+private Booking[] bookList;
 
-	public User(String id,String na,String Em,String pass) {
+
+	public User(String id,String na,String Em,String pass,int size) {
 		userId=id;
 		name=na;
 		email=Em;
 		password=pass;
 		nOb=0;
+		bookList=new Booking[size];
 	}
 
 	@Override
@@ -49,6 +52,15 @@ private int nOb;
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public void login() {
+		
+	}
+	public void logout() {
+	}
+	public void makeBooking() {
+	}
+	public void cancelBooking() {
 	}
 	
 
