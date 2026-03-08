@@ -16,7 +16,7 @@ public class Booking {
 	LocalDate today = LocalDate.now();
 	date=today;
 	status="Not confirmed";
-	totalPrice=0;
+	totalPrice=calculatePrice(0);
 	servBooked=new Service[3];
 	nOs = 0;
 		}
@@ -36,47 +36,50 @@ public class Booking {
 			}
 			return false;	
 		}
+		
+		public double calculatePrice(int index) {
+		    // base case
+		    if(index == nOs)
+		        return 0;
+
+		    // recursive case
+		    return servBooked[index].calculateCost() + calculatePrice(index + 1);
+		}
+		
+		
+		public boolean DeleteService(int id) {
+			for(int i=0;i<nOs;i++) {
+				if(servBooked[i].getserviceId()==id) {
+					for(int j=i;j<nOs-1;j++)
+						servBooked[j]==servBooked[j+1];
+				servBooked[--nOs]=null;
+						System.out.print("Service deleted");
+						return true;}
+					}
+			System.out.print("Service not found!");
+			return false;
+			}
+			
+				
+		
 	//gitters and setters
 	public double getTotalPrice() {
 			return totalPrice;
-		}
-
-	public String getStatus() {
-			return status;
 		}
 
 		public void setStatus(String status) {
 			this.status = status;
 		}
 
-	public String getDate() {
-			return date;
-		}
-
-		public void setDate(String date) {
-			this.date = date;
-		}
-
 	public int getBookingId() {
 			return bookingId;
 		}
 
-		
-		public void confirmBooking() {
-			
-		}
-		public void cancelBooking () {
-			
-		}
-		public double calculatePrice() {
-			return totalPrice ;
-			
-		}
 		public int getNumberOfServices() {
 			return nOs;}
 		}
 		public String toString() {
-			return "Booking details:\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status;
+			return "Booking details:\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status+"\nTotal price: "+calculatePrice(0);
 		}
 		
 	}

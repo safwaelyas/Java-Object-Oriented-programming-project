@@ -47,8 +47,8 @@ public class BookWithUs {
 			System.out.println("1-Make booking");
 			System.out.println("2-Cancel booking");
 			System.out.println("3-Confirm booking");
-			System.out.println("4- Modify booking");
-			System.out.println("5- Show booking history");
+			System.out.println("4-Modify booking");
+			System.out.println("5-Show booking history");
 			System.out.println("6-Log out!");
 			System.out.println("Enter your choice: ");
 			int choice=nextInt();
@@ -111,22 +111,54 @@ public class BookWithUs {
 					break;
 				default: break;	
 			}while(serv!=4);
-			if (b.getNumberOfServices() > 0) 
+			if (b.getNumberOfServices() > 0) {
 			    user1.makeBooking(b);
+			System.out.print(b.toString());}
 			break;
 			
-			case 2: System.out.print("Which booking you want to cancel? (1-2-3): ")
-			int idBook=nextInt():
-			boolean status=user1.cancelBooking(idBook);
-	        	if(status)
-			System.out.print("Booking cancelled")
-			else
-				System.out.print("Booking not found!!")
+			
+			//cancel booking option :
+			case 2: System.out.print("Which booking you want to cancel? (1-2-3): ");
+			int idBook=nextInt();
+		    user1.cancelBooking(idBook);
+	  
 			break;
-	        	
-			case 3: break;
-			case 4: break;
-			case 5: break;
+	        	//confirm a booking(by default booking is not confirmed).
+			case 3:
+			  System.out.print("Which booking you want to confirm? (1-2-3): ");
+				int idBook=nextInt();
+				user1.confirmBooking(idBook);
+				 break;
+			case 4: 
+				System.out.println("What you would like to do? ");
+				System.out.println("1-delete booking ");
+				System.out.println("2-delete servise ");
+				int option=user.nextInt();
+				switch(option) {
+				case 1:
+					System.out.print("Which booking you want to delete? (1-2-3): ");
+					int idBook=nextInt();
+					user1.deleteBooking();
+					break;
+				case 2: 
+					System.out.print("Which booking you want to delete a service from? (1-2-3): ");
+					int idBook=nextInt();
+					Booking r=user1.findBooking(idBook);
+					System.out.print("Which service you want to delete? (1-2-3): ");
+					int serviceId=nextInt();
+					r.DeleteService(serviceId);
+					break;
+				default: System.out.println("invalid selection!!"); break;
+				}
+				break;
+			
+			case 5: 
+				Booking[] array=user1.getBookList();
+				for(int i=0;i<user1.getNob();i++) {
+					System.out.println(array[i].toString());
+				}
+				
+				break;
 			case 6: user1.logout(); return;
 			default: System.out.println("Invalid entry!! ");
  break;

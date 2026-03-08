@@ -48,18 +48,59 @@ private Booking[] bookList;
 		return true;}
 		return false;
 	}
-	//a method to cancell a booking with the recevied ID.
+	//a method to cancel a booking with the recevied ID.
 	public boolean cancelBooking(int id) {
-		for(int i=0;i<nOb-1;i++) {
+		for(int i=0;i<nOb;i++) {
+			if(bookList[i].getBookingId()==id) {
+				bookList[i].setStatus("cancelled");
+				System.out.print("Booking cancelled");
+				return true;
+			}
+		}
+		System.out.print("Booking not found!!");
+		return false;
+	}
+	
+	public boolean deleteBooking(int id) {
+		for(int i=0;i<nOb;i++) {
 			if(bookList[i].getBookingId()==id) {
 				for(int j=i;j<nOb-1;j++)
 				bookList[j]==bookList[j+1];
 				bookList[--nOb]=null;
-				return true;}
+				System.out.print("Booking deleted");
+				return true;
+			}
 		}
+		System.out.print("Booking not found!!");
 		return false;
+		
 	}
 	
+	public boolean confirmBooking(int id) {
+		for(int i=0;i<nOb;i++) {
+			if(bookList[i].getBookingId()==id) {
+				bookList[i].setStatus("Confirmed");
+				System.out.println("Booking Confirmed successfully!");
+			return true;}
+		}
+		System.out.println("Booking Not found!");
+		return false;
+				
+				
+	}
+	public Booking findBooking(int id) {
+		for(int i=0;i<nOb;i++) {
+			if(bookList[i].getBookingId()==id)
+				return bookList[i];}
+		return null;
+	}
+	
+	public Booking[] getBookList() {
+		return bookList;
+	}
+	public int getNob() {
+		return nOb;
+	}
 	//getters and setters for the attributes.
 	
 	public String getUserId() {

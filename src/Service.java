@@ -9,14 +9,14 @@ public static int count=1;
 
 		this.serviceId =count++ ;
 		this.serviceType = "";
-		this.price = 0.0;
+		this.price = calculateCost();
 	}
 	
 	public Service(String name) {//cons
 
 		this.serviceId =count++;
 		this.serviceType = name;
-		this.price = 0.0;
+		this.price = calculateCost();
 	}
 	
 	public final String getDetails() {
