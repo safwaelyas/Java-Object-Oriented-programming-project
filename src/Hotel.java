@@ -17,7 +17,10 @@ private int nights;
 	}
 	
 	public double calculateCost() {
-		return;
+		if(roomType.equals("Suite"))
+			return (double)(nights * 1250);
+			else
+			return (double)(nights * 250);
 	}
 	
 public String getroomType(){//getter
@@ -36,9 +39,8 @@ public void setnights(int nights) { // s setter
 	this.nights = nights; 
 }//e setter
 
-
 public String toString(){
-return super.toString() +" \n , roomType : " + roomType + " , nights : \ "+ nights ;
+return super.getDetails() +" \n , roomType : " + roomType + " , nights : \ "+ nights ;
 }
 
 }//end class 

@@ -20,7 +20,10 @@ this.arrival = arrival;
 	
 	}
 public double calculateCost() {
-	return;
+	if(airline.equals("flynas"))
+		return (double)(super.getprice() * 10);
+		else
+		return (double)(super.getprice() * 20);
 }
 
 public String getairline(){//getter
@@ -48,9 +51,8 @@ public void setarrival(String arrival) { // s setter
 	this.arrival = arrival; 
 }//e setter
 
-
 public String toString(){
-return super.toString() +" \n , airline : " + airline + " , departure : \ "+ departure +  " , arrival :"+arrival;
+return super.getDetails()+" \n , airline : " + airline + " , departure :  "+ departure +  " , arrival :"+arrival;
 }
 
 }//end class

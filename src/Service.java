@@ -19,7 +19,8 @@ public abstract class Service{
 		this.price = price;
 	}
 	
-	public String getDetails() {
+	public final String getDetails() {
+		return" serviceId : " + serviceId + " , name : \ "+ name +  " , price :"+price;
 	}
 	
 	public abstract double calculateCost();
@@ -46,10 +47,7 @@ public void setname(String name) { // s setter
 public void setprice(double price) { // s setter
 	this.price = price; 
 }//e setter
-
-public String toString(){
-return" serviceId : " + serviceId + " , name : \ "+ name +  " , price :"+price;
-}
+	
 	
 	
 }
