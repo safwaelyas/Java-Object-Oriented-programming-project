@@ -1,26 +1,26 @@
 //Dina Alyabis - 446202768 Donne
 public class CarRental extends Service {
-	private String carType ;
+	private char carType ;
 	private int rentalDays ;
 
 		public CarRental() {
-			super("","",0);
-			carType ="";
+			super("Car");
+			carType ='';
 			rentalDays= 0;
 		}
-		public CarRental(String serviceId , String name, double price,String carType,int rentalDays) {
-			super(serviceId,name,price);
+		public CarRental(char carType,int rentalDays) {
+			super("Car");
 			this.carType=carType;
 			this.rentalDays = rentalDays;
 		}
 		public double calculateCost() {
-			if(carType.equals("Luxury"))
+			if(carType=='L'||carType=='l')
 			return (double)(rentalDays * 1000);
 			else
 			return (double)(rentalDays * 100);
 		}
 		
-	public String getcarType(){//getter
+	public char getcarType(){//getter
 	return carType ;
 	}// e 
 
@@ -28,9 +28,6 @@ public class CarRental extends Service {
 		return rentalDays;
 	}// e getter
 
-	public void setcarType(String carType) { // s setter
-		this.carType = carType; 
-	}//e setter
 
 	public void setrentalDays(int rentalDays) { // s setter
 		this.rentalDays = rentalDays; 

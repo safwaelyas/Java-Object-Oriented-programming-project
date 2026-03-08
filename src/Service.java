@@ -1,22 +1,22 @@
 //Dina Alyabis - 446202768
-public abstract class Service{
-
-	private String serviceId;
-	private String name ;
+public abstract class Service implements payable{
+public static int count=1;
+	private int serviceId;
+	private String serviceType ;
 	private double price; 
 	
 	public Service() {//defaulte cons
 
-		this.serviceId = "";
-		this.name = "";
-		this.price = "";
+		this.serviceId =count++ ;
+		this.serviceType = "";
+		this.price = 0.0;
 	}
 	
-	public Service( String serviceId , String name, double price) {//cons
+	public Service(String name) {//cons
 
-		this.serviceId = serviceId;
-		this.name = name;
-		this.price = price;
+		this.serviceId =count++;
+		this.serviceType = name;
+		this.price = 0.0;
 	}
 	
 	public final String getDetails() {
@@ -30,7 +30,7 @@ public String getserviceId(){//getter
 return serviceId ;
 }// e 	
 public String getname(){//getter
-return name ;
+return serviceType ;
 }// e 	
 public double getprice(){//getter
 return price ;
@@ -41,11 +41,11 @@ public void setserviceId(String serviceId) { // s setter
 }//e setter
 
 public void setname(String name) { // s setter
-	this.name = name; 
+	this.serviceType = name; 
 }//e setter
 
-public void setprice(double price) { // s setter
-	this.price = price; 
+public void setprice() { // s setter
+	this.price = calculateCost(); 
 }//e setter
 	
 	

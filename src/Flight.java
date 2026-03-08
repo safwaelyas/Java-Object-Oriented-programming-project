@@ -1,55 +1,40 @@
 //Dina Alyabis - 446202768 Donnnnne
 public class Flight extends Service{
 
-private String airline ;
-private String departure ;
-private String arrival ;
+private int departure ;
+private char ClassType; 
 
 public Flight() {//defaulte cons
-super("","",0);
-this.airline="";
+super("Flight");
 this.departure="";
-this.arrival = "";
+this.ClassType = "";
 	}
 
-public Flight( String serviceId , String name, double price, String airline, String departure, String arrival) {// cons
-super(serviceId,name,price);
-this.airline=airline;
+public Flight(int departure,char ClassType) {// cons
+super("Flight");
 this.departure=departure;
-this.arrival = arrival;
+this.ClassType = ClassType;
 	
 	}
 public double calculateCost() {
-	if(airline.equals("flynas"))
-		return (double)(super.getprice() * 10);
-		else
-		return (double)(super.getprice() * 20);
+	if(ClassType=='F')
+		return 3000;
+		else if(ClassType=='B')
+			return 2000;
+		else return 500;
 }
 
-public String getairline(){//getter
-return airline ;
-}// e 
 
-public String getdeparture(){//getter
+public int getdeparture(){//getter
 return departure ;
 }// e 
 
-public String getarrival(){//getter
-return arrival ;
-}// e 
 
 
-public void setairline(String airline) { // s setter
-	this.airline = airline; 
-}//e setter
-
-public void setdeparture(String departure) { // s setter
+public void setdeparture(int departure) { // s setter
 	this.departure = departure; 
 }//e setter
 
-public void setarrival(String arrival) { // s setter
-	this.arrival = arrival; 
-}//e setter
 
 public String toString(){
 return super.getDetails()+" \n , airline : " + airline + " , departure :  "+ departure +  " , arrival :"+arrival;

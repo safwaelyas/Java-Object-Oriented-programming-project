@@ -1,4 +1,4 @@
-
+import java.util.UUID;
 public class User {
 	//attribuites section.
 private String userId;
@@ -9,8 +9,8 @@ private int nOb;
 private Booking[] bookList;
 
 //constructor to initiate the values of the attribuites.
-	public User(String id,String na,String Em,String pass,int size) {
-		userId=id;
+	public User(String na,String Em,String pass,int size) {
+		userId=UUID.randomUUID().toString();
 		name=na;
 		email=Em;
 		password=pass;

@@ -1,4 +1,6 @@
 
-public class payable {
+public interface payable {
+
+	    double calculateCost();
 
 }

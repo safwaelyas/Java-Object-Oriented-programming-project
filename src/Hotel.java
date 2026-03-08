@@ -1,39 +1,34 @@
 //Dina Alyabis - 446202768 Doneee
 public class Hotel extends Service {
 
-private String roomType ;
+private char roomType ;
 private int nights;
 
 	public Hotel() {//defaulte cons
-		super("","",0);
-		roomType = "";
+		super("Hotel");
+		roomType = '';
 		nights = 0;
 	}
 	
-	public Hotel(String serviceId , String name, double price,String roomType,int nights) {// cons
-		super(serviceId,name,price);
+	public Hotel (char roomType,int nights) {// cons
+		super("Hotel");
 		this.roomType= roomType;
 		this.nights=nights;
 	}
 	
 	public double calculateCost() {
-		if(roomType.equals("Suite"))
+		if(roomType=='s'||roomType=='S')
 			return (double)(nights * 1250);
 			else
 			return (double)(nights * 250);
 	}
 	
-public String getroomType(){//getter
-return roomType ;
-}// e 
+
 
 public int getnights(){//s getter
 	return nights;
 }// e getter
 
-public void setroomType(String roomType) { // s setter
-	this.roomType = roomType; 
-}//e setter
 
 public void setnights(int nights) { // s setter
 	this.nights = nights; 
