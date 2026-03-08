@@ -16,7 +16,7 @@ public class BookWithUs {
 	public static void main(String[] args) {
 		Scanner user= new Scanner(System.in);
 		String name,email,pass;
-		System.out.println("Welcome to Book with us System");
+		System.out.println("Welcome to Book with us System, please create account to proceed..");
         System.out.println("Enter your information below to sign up!");
         System.out.print("Name: ");
         name=user.nextLine();
@@ -27,19 +27,31 @@ public class BookWithUs {
         pass=user.next();
         user.nextLine();
        User user1=new User(name,email,pass,3);
+       
+       System.out.println("Login to your account");
+
+       System.out.print("Enter your name: ");
+       String id= user.next();
+
+       System.out.print("Enter Password: ");
+       String password = user.next();
+
+       if(!user1.login(id, password)) {
+           System.out.println("Login failed. Program terminated.");
+           return;
+       }
+
+       System.out.println("Login successful!");
 		do {
 			System.out.println("What would you like to do?");
-			System.out.println("1-Make a book");
+			System.out.println("1-Make booking");
 			System.out.println("2-Cancel booking");
 			System.out.println("3-Confirm booking");
 			System.out.println("4- Modify booking");
-			System.out.println("5- Show booking");
+			System.out.println("5- Show booking history");
 			System.out.println("6-Log out!");
-			System.out.println("Enter you choice: ");
+			System.out.println("Enter your choice: ");
 			int choice=nextInt();
-			if(choice==6) {
-				System.out.println("Good bye, Have a nice day");
-				break;}
 			switch(choice) {
 			case 1:
 				Booking b=new Booking();
@@ -99,14 +111,23 @@ public class BookWithUs {
 					break;
 				default: break;	
 			}while(serv!=4);
-			user1.makeBooking(b);
+			if (b.getNumberOfServices() > 0) 
+			    user1.makeBooking(b);
 			break;
 			
-			case 2: break;
+			case 2: System.out.print("Which booking you want to cancel? (1-2-3): ")
+			int idBook=nextInt():
+			boolean status=user1.cancelBooking(idBook);
+	        	if(status)
+			System.out.print("Booking cancelled")
+			else
+				System.out.print("Booking not found!!")
+			break;
+	        	
 			case 3: break;
 			case 4: break;
 			case 5: break;
-			case 6: break;
+			case 6: user1.logout(); return;
 			default: System.out.println("Invalid entry!! ");
  break;
 			}

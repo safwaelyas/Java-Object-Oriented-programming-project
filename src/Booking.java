@@ -1,6 +1,8 @@
+import java.time.LocalDate;
 public class Booking {
 	//Attributes
-	private String bookingId;
+	public static int counter=1;
+	private int bookingId;
 	private String date;
 	private String status;
 	private double totalPrice ;
@@ -9,13 +11,30 @@ public class Booking {
 
 
 	//Constructors
-		public Booking(String b,String d,String s,int size) {
-	bookingId=b;
-	date=d;
-	status=s;
+		public Booking() {
+	bookingId=counter++;
+	LocalDate today = LocalDate.now();
+	date=today;
+	status="Not confirmed";
 	totalPrice=0;
-	servBooked=new Service[size];
+	servBooked=new Service[3];
 	nOs = 0;
+		}
+		
+		public boolean addService(Service s) {
+			if(nOs<servBooked.length) {
+				if(s instanceof Hotel)
+					servBooked[nOs++]=new Hotel((Hotel)s);
+				else if(s instanceof Flight)
+					servBooked[nOs++]=new Flight((Flight)s);
+				else if(s instanceof CarRental)
+					servBooked[nOs++]=new CarRental((CarRental)s);
+				else if(s instanceof internationalFlights)
+					servBooked[nOs++]=new internationalFlights((internationalFlights)s);
+
+			return true;
+			}
+			return false;	
 		}
 	//gitters and setters
 	public double getTotalPrice() {
@@ -38,14 +57,11 @@ public class Booking {
 			this.date = date;
 		}
 
-	public String getBookingId() {
+	public int getBookingId() {
 			return bookingId;
 		}
 
-		public void setBookingId(String bookingId) {
-			this.bookingId = bookingId;
-		}
-	//methods
+		
 		public void confirmBooking() {
 			
 		}
@@ -55,6 +71,9 @@ public class Booking {
 		public double calculatePrice() {
 			return totalPrice ;
 			
+		}
+		public int getNumberOfServices() {
+			return nOs;}
 		}
 		public String toString() {
 			return "Booking details:\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status;

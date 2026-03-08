@@ -23,17 +23,19 @@ private Booking[] bookList;
 	}
 
 	//login method that validate User Id and Password to allow to enter the personal booking system account.
-	public boolean login(String userId,String password) {
-		if(this.userId!=userId) {
-			System.out.println("ID is incorrect!")
-			return false;}
-		else if (this.password!=password) {
-			System.out.println("Password is incorrect is incorrect!")
-			return false;}
-		return true;
-		}
-			
-		
+	public boolean login(String name, String password) {
+
+	    if(!this.name.equals(name)) {
+	        System.out.println("ID is incorrect!");
+	        return false;
+	    }
+
+	    if(!this.password.equals(password)) {
+	        System.out.println("Password is incorrect!");
+	        return false;
+	    }
+
+	    return true;
 	}
 //system logout method.(doesn't check for anything.)
 	public void logout() {
@@ -47,9 +49,9 @@ private Booking[] bookList;
 		return false;
 	}
 	//a method to cancell a booking with the recevied ID.
-	public boolean cancelBooking(Booking book) {
+	public boolean cancelBooking(int id) {
 		for(int i=0;i<nOb-1;i++) {
-			if(bookList[i].getId()==book.getId()) {
+			if(bookList[i].getBookingId()==id) {
 				for(int j=i;j<nOb-1;j++)
 				bookList[j]==bookList[j+1];
 				bookList[--nOb]=null;
