@@ -23,6 +23,11 @@ public double calculateCost() {
 			return 2000;
 		else return 500;
 }
+public Flight( Flight obj) {
+	super("Flight");
+	departure = obj.departure;
+	ClassType = obj.ClassType;
+}
 
 
 public int getdeparture(){//getter

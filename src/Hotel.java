@@ -22,7 +22,11 @@ private int nights;
 			else
 			return (double)(nights * 250);
 	}
-	
+	public Hotel( Hotel obj) {
+		super("Hotel");
+		roomType = obj.roomType;
+		nights = obj.nights;
+	}
 
 
 public int getnights(){//s getter

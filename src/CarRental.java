@@ -19,6 +19,13 @@ public class CarRental extends Service {
 			else
 			return (double)(rentalDays * 100);
 		}
+
+public CarRental( CarRental obj) {
+	super("Car");
+	carType = obj.carType;
+	rentalDays = obj.rentalDays;
+}
+
 		
 	public char getcarType(){//getter
 	return carType ;
