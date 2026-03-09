@@ -1,8 +1,8 @@
 //Dina Alyabis - 446202768 Donnnnne
 public class Flight extends Service{
 
-private int departure ;
-private char ClassType; 
+protected int departure ;
+protected char ClassType; 
 
 public Flight() {//defaulte cons
 super("Flight");

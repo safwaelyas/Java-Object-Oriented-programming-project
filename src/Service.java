@@ -1,9 +1,9 @@
 //Dina Alyabis - 446202768
 public abstract class Service implements payable{
 public static int count=1;
-	private int serviceId;
-	private String serviceType ;
-	private double price; 
+	protected int serviceId;
+	protected String serviceType ;
+	protected double price; 
 	
 	public Service() {//defaulte cons
 
@@ -20,13 +20,13 @@ public static int count=1;
 	}
 	
 	public final String getDetails() {
-		return" serviceId : " + serviceId + " , name : \ "+ name +  " , price :"+price;
+		return" serviceId : " + serviceId + " ,serviceType : "+ serviceType +  " , price :"+price;
 	}
 	
 	public abstract double calculateCost();
 	
 	
-public String getserviceId(){//getter
+public int getserviceId(){//getter
 return serviceId ;
 }// e 	
 public String getname(){//getter
@@ -36,7 +36,7 @@ public double getprice(){//getter
 return price ;
 }// e 
 
-public void setserviceId(String serviceId) { // s setter
+public void setserviceId(int serviceId) { // s setter
 	this.serviceId = serviceId; 
 }//e setter
 

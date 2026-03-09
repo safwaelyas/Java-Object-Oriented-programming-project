@@ -26,12 +26,13 @@ private Booking[] bookList;
 	public boolean login(String name, String password) {
 
 	    if(!this.name.equals(name)) {
-	        System.out.println("ID is incorrect!");
+	    	
+	        System.out.println("Login failed, ID is incorrect!, Try again!");
 	        return false;
 	    }
 
 	    if(!this.password.equals(password)) {
-	        System.out.println("Password is incorrect!");
+	        System.out.println("Login failed, Password is incorrect!,Try again!");
 	        return false;
 	    }
 
@@ -39,7 +40,7 @@ private Booking[] bookList;
 	}
 //system logout method.(doesn't check for anything.)
 	public void logout() {
-			System.out .print(ln("Thank you for using \"Book with us\", we hope our service was satisfying. Have a nice day!"));
+			System.out .println("Thank you for using \"Book with us\", we hope our service was satisfying. Have a nice day!");
 	}
 	//method to add a booking to the user array of bookings incase he didn't reach bookings limit.
 	public boolean makeBooking(Booking book) {
@@ -65,7 +66,7 @@ private Booking[] bookList;
 		for(int i=0;i<nOb;i++) {
 			if(bookList[i].getBookingId()==id) {
 				for(int j=i;j<nOb-1;j++)
-				bookList[j]==bookList[j+1];
+				bookList[j]=bookList[j+1];
 				bookList[--nOb]=null;
 				System.out.print("Booking deleted");
 				return true;

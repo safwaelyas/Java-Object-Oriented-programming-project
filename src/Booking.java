@@ -3,7 +3,7 @@ public class Booking {
 	//Attributes
 	public static int counter=1;
 	private int bookingId;
-	private String date;
+	private LocalDate date;
 	private String status;
 	private double totalPrice ;
 	public Service[] servBooked ;
@@ -23,15 +23,15 @@ public class Booking {
 		
 		public boolean addService(Service s) {
 			if(nOs<servBooked.length) {
-				if(s instanceof Hotel)
+				if(s instanceof Hotel) 
 					servBooked[nOs++]=new Hotel((Hotel)s);
-				else if(s instanceof Flight)
+					else if(s instanceof Flight)
 					servBooked[nOs++]=new Flight((Flight)s);
 				else if(s instanceof CarRental)
 					servBooked[nOs++]=new CarRental((CarRental)s);
 				else if(s instanceof internationalFlights)
 					servBooked[nOs++]=new internationalFlights((internationalFlights)s);
-
+				System.out.print("Service Added Successfully\n");
 			return true;
 			}
 			return false;	
@@ -51,7 +51,7 @@ public class Booking {
 			for(int i=0;i<nOs;i++) {
 				if(servBooked[i].getserviceId()==id) {
 					for(int j=i;j<nOs-1;j++)
-						servBooked[j]==servBooked[j+1];
+						servBooked[j]=servBooked[j+1];
 				servBooked[--nOs]=null;
 						System.out.print("Service deleted");
 						return true;}
@@ -76,10 +76,13 @@ public class Booking {
 		}
 
 		public int getNumberOfServices() {
-			return nOs;}
+			return nOs;
 		}
 		public String toString() {
-			return "Booking details:\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status+"\nTotal price: "+calculatePrice(0);
+			String s="";
+			for(int i=0;i<nOs;i++)
+				s= servBooked[i].getserviceId()+"-"+servBooked[i].getname()+"\n";
+			return "Booking details:\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status+"\nNumber of Services: "+nOs+""+s+"\nTotal price: "+calculatePrice(0)+"\n---------------------------------";
 		}
 		
 	}
