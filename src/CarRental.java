@@ -5,7 +5,7 @@ public class CarRental extends Service {
 
 		public CarRental() {
 			super("Car");
-			carType ='';
+			carType ='0';
 			rentalDays= 0;
 		}
 		public CarRental(char carType,int rentalDays) {
@@ -14,7 +14,7 @@ public class CarRental extends Service {
 			this.rentalDays = rentalDays;
 		}
 		public double calculateCost() {
-			if(carType=='L'||carType=='l')
+			if(carType=='L')
 			return (double)(rentalDays * 1000);
 			else
 			return (double)(rentalDays * 100);
@@ -26,23 +26,8 @@ public CarRental( CarRental obj) {
 	rentalDays = obj.rentalDays;
 }
 
-		
-	public char getcarType(){//getter
-	return carType ;
-	}// e 
-
-	public int getrentalDays(){//s getter
-		return rentalDays;
-	}// e getter
-
-
-	public void setrentalDays(int rentalDays) { // s setter
-		this.rentalDays = rentalDays; 
-	}//e setter	
-		
-
 	public String toString(){
-	return super.getDetails()+" \n , carType : " + carType + " , rentalDays : \ "+ rentalDays ;
+	return super.getDetails()+" \n , carType : " + carType + "\n , rentalDays :  "+ rentalDays ;
 	}
 
 

@@ -6,8 +6,8 @@ protected char ClassType;
 
 public Flight() {//defaulte cons
 super("Flight");
-this.departure="";
-this.ClassType = "";
+this.departure=1;
+this.ClassType ='0';
 	}
 
 public Flight(int departure,char ClassType) {// cons
@@ -30,19 +30,8 @@ public Flight( Flight obj) {
 }
 
 
-public int getdeparture(){//getter
-return departure ;
-}// e 
-
-
-
-public void setdeparture(int departure) { // s setter
-	this.departure = departure; 
-}//e setter
-
-
 public String toString(){
-return super.getDetails()+" \n , airline : " + airline + " , departure :  "+ departure +  " , arrival :"+arrival;
+return super.getDetails() + "\n , departure :  "+ departure+"\n, Class Type: "+ ClassType;
 }
 
 }//end class

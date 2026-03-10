@@ -1,53 +1,41 @@
 //Dina Alyabis - 446202768
-public abstract class Service implements payable{
-public static int count=1;
-	protected int serviceId;
-	protected String serviceType ;
-	protected double price; 
+public abstract class Service implements payable {
 	
-	public Service() {//defaulte cons
+	protected int serviceId;
+	protected String serviceType;
+	protected double price;
 
-		this.serviceId =count++ ;
+	public Service() {// defaulte cons
 		this.serviceType = "";
 		this.price = calculateCost();
 	}
-	
-	public Service(String name) {//cons
 
-		this.serviceId =count++;
+	public Service(String name) {// cons
+
 		this.serviceType = name;
 		this.price = calculateCost();
 	}
-	
+
 	public final String getDetails() {
-		return" serviceId : " + serviceId + " ,serviceType : "+ serviceType +  " , price :"+price;
+		return " serviceId : " + serviceId + " ,serviceType : " + serviceType + " , price :" + price;
 	}
-	
+
 	public abstract double calculateCost();
-	
-	
-public int getserviceId(){//getter
-return serviceId ;
-}// e 	
-public String getname(){//getter
-return serviceType ;
-}// e 	
-public double getprice(){//getter
-return price ;
-}// e 
 
-public void setserviceId(int serviceId) { // s setter
-	this.serviceId = serviceId; 
-}//e setter
+	public int getserviceId() {// getter
+		return serviceId;
+	}// e
 
-public void setname(String name) { // s setter
-	this.serviceType = name; 
-}//e setter
+	public String getname() {// getter
+		return serviceType;
+	}// e
 
-public void setprice() { // s setter
-	this.price = calculateCost(); 
-}//e setter
+	public void setserviceId(int serviceId) { // s setter
+		this.serviceId = serviceId;
+	}// e setter
+
 	
+
 	
-	
+
 }

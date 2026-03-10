@@ -6,7 +6,7 @@ private int nights;
 
 	public Hotel() {//defaulte cons
 		super("Hotel");
-		roomType = '';
+		roomType ='0';
 		nights = 0;
 	}
 	
@@ -17,7 +17,7 @@ private int nights;
 	}
 	
 	public double calculateCost() {
-		if(roomType=='s'||roomType=='S')
+		if(roomType=='S')
 			return (double)(nights * 1250);
 			else
 			return (double)(nights * 250);
@@ -29,17 +29,8 @@ private int nights;
 	}
 
 
-public int getnights(){//s getter
-	return nights;
-}// e getter
-
-
-public void setnights(int nights) { // s setter
-	this.nights = nights; 
-}//e setter
-
 public String toString(){
-return super.getDetails() +" \n , roomType : " + roomType + " , nights : \ "+ nights ;
+return super.getDetails() +" \n , roomType : " + roomType + " , nights :  "+ nights ;
 }
 
 }//end class 

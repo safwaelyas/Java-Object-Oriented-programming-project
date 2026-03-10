@@ -21,17 +21,11 @@ public internationalFlights( internationalFlights obj) {
 
 
 public String toString(){//show information
-return super.toString()+" \n , Visa : " + Visa + "
+return super.toString()+" \n , Visa : " + Visa;
 }
 
 
-public boolean getVisa(){//getter
-return Visa;
-}// e 
 
-public void setVisa(boolean Visa) { // s setter
-	this.Visa = Visa; 
-}//e setter
 
 
 

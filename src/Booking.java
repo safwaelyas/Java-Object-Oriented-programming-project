@@ -1,6 +1,7 @@
 import java.time.LocalDate;
-public class Booking {
+public class Booking implements payable {
 	//Attributes
+	private final double CarTax=500;
 	public static int counter=1;
 	private int bookingId;
 	private LocalDate date;
@@ -16,25 +17,40 @@ public class Booking {
 	LocalDate today = LocalDate.now();
 	date=today;
 	status="Not confirmed";
-	totalPrice=calculatePrice(0);
+	totalPrice=calculateCost();
 	servBooked=new Service[3];
 	nOs = 0;
 		}
 		
 		public boolean addService(Service s) {
 			if(nOs<servBooked.length) {
+				Service serviceToAdd=null;
 				if(s instanceof Hotel) 
-					servBooked[nOs++]=new Hotel((Hotel)s);
+					serviceToAdd=new Hotel((Hotel)s);
 					else if(s instanceof Flight)
-					servBooked[nOs++]=new Flight((Flight)s);
+						serviceToAdd=new Flight((Flight)s);
 				else if(s instanceof CarRental)
-					servBooked[nOs++]=new CarRental((CarRental)s);
+					serviceToAdd=new CarRental((CarRental)s);
 				else if(s instanceof internationalFlights)
-					servBooked[nOs++]=new internationalFlights((internationalFlights)s);
+					serviceToAdd=new internationalFlights((internationalFlights)s);
+				serviceToAdd.setserviceId(nOs+1);
+				servBooked[nOs++]=serviceToAdd;
 				System.out.print("Service Added Successfully\n");
 			return true;
 			}
 			return false;	
+		}
+	
+		
+		public double calculateCost() {
+			boolean CarFound=false;
+			for(int i=0;i<nOs;i++) {
+				if(servBooked[i].getname().equalsIgnoreCase("car"))
+					CarFound=true;}
+			if(CarFound)
+			return calculatePrice(0)+CarTax;
+			else
+				return calculatePrice(0);
 		}
 		
 		public double calculatePrice(int index) {
@@ -44,7 +60,13 @@ public class Booking {
 
 		    // recursive case
 		    return servBooked[index].calculateCost() + calculatePrice(index + 1);
+
 		}
+		
+		
+		
+		
+		
 		
 		
 		public boolean DeleteService(int id) {
@@ -60,12 +82,6 @@ public class Booking {
 			return false;
 			}
 			
-				
-		
-	//gitters and setters
-	public double getTotalPrice() {
-			return totalPrice;
-		}
 
 		public void setStatus(String status) {
 			this.status = status;
@@ -81,8 +97,12 @@ public class Booking {
 		public String toString() {
 			String s="";
 			for(int i=0;i<nOs;i++)
-				s= servBooked[i].getserviceId()+"-"+servBooked[i].getname()+"\n";
-			return "Booking details:\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status+"\nNumber of Services: "+nOs+""+s+"\nTotal price: "+calculatePrice(0)+"\n---------------------------------";
-		}
+				s+= servBooked[i].getserviceId()+"-"+servBooked[i].getname()+"\n";
+			return "Booking details:\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status+"\nNumber of Services: "+nOs+""+s+"\nTotal price: "+calculateCost()+"\n";}
 		
-	}
+		
+		
+		
+}
+
+			
