@@ -35,7 +35,6 @@ public class Booking implements payable {
 					serviceToAdd=new internationalFlights((internationalFlights)s);
 				serviceToAdd.setserviceId(nOs+1);
 				servBooked[nOs++]=serviceToAdd;
-				System.out.print("Service Added Successfully\n");
 			return true;
 			}
 			return false;	
@@ -47,7 +46,7 @@ public class Booking implements payable {
 			for(int i=0;i<nOs;i++) {
 				if(servBooked[i].getname().equalsIgnoreCase("car"))
 					CarFound=true;}
-			if(CarFound)
+			if(CarFound) 
 			return calculatePrice(0)+CarTax;
 			else
 				return calculatePrice(0);
@@ -75,10 +74,8 @@ public class Booking implements payable {
 					for(int j=i;j<nOs-1;j++)
 						servBooked[j]=servBooked[j+1];
 				servBooked[--nOs]=null;
-						System.out.print("Service deleted");
 						return true;}
 					}
-			System.out.print("Service not found!");
 			return false;
 			}
 			
@@ -101,7 +98,9 @@ public class Booking implements payable {
 			return "Booking details:\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status+"\nNumber of Services: "+nOs+""+s+"\nTotal price: "+calculateCost()+"\n";}
 		
 		
-		
+		public double getTotalPrice() {
+			return totalPrice;
+		}
 		
 }
 

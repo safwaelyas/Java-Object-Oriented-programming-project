@@ -8,6 +8,12 @@ Lab INUSTRUCTUR: Ghada Abdullah S Alamer.
 */
 
 //Class with the main method implemented.
+
+
+
+//must add a message whrn service is added successfully, messages must be displayed in the main not the classes in
+//in case of , cancell booking, delete booking, confirm booking,make a service, delete a service or any action.
+
 import static java.lang.Character.*;
 import java.util.*;
 public class BookWithUs {
@@ -31,7 +37,9 @@ public class BookWithUs {
 				Service s;
 				s=new Hotel(room,night);
 				boolean state=n.addService(s);
-				if(!state)
+				if(state)
+					System.out.println("Service Added Successfully");
+				else
 					System.out.println("unable to add more services");
 				break;
 			case 2: 
@@ -42,7 +50,9 @@ public class BookWithUs {
 			Service c;
 			c=new CarRental(car,days);
 			boolean stateC=n.addService(c);
-			if(!stateC)
+			if(stateC)
+				System.out.println("Service Added Successfully");
+			else
 				System.out.println("unable to add more services");
 			break;
 			
@@ -64,7 +74,9 @@ public class BookWithUs {
 				else 
 				f=new Flight(depart,classtype);
 				boolean stateF=n.addService(f);
-				if(!stateF)
+				if(stateF)
+					System.out.println("Service Added Successfully");
+				else
 					System.out.println("unable to add more services");
 				break;
 			default: break; }	
@@ -140,7 +152,11 @@ public class BookWithUs {
 
 				System.out.print("Which booking you want to cancel? (1-2-3): ");
 				int idBook = user.nextInt();
-				user1.cancelBooking(idBook);
+				boolean isCancelled=user1.cancelBooking(idBook); 
+				if(isCancelled)
+					System.out.print("Booking cancelled");
+				else
+					System.out.print("Booking not found!!");
 
 				break;
 			// confirm a booking(by default booking is not confirmed).
@@ -153,7 +169,11 @@ public class BookWithUs {
 
 				System.out.print("Which booking you want to confirm? (1-2-3): ");
 				int cBook = user.nextInt();
-				user1.confirmBooking(cBook);
+				boolean isConfirmed=user1.confirmBooking(cBook);
+				if(isConfirmed)
+					System.out.println("Booking Confirmed successfully!");
+				else
+					System.out.println("Booking Not found!");
 				break;
 			case 4:
 				if (user1.getNob() == 0) {
@@ -171,7 +191,12 @@ public class BookWithUs {
 				case 1:
 					System.out.print("Which booking you want to delete? (1-2-3): ");
 					int dBook = user.nextInt();
-					user1.deleteBooking(dBook);
+					boolean bookingDeleted=user1.deleteBooking(dBook);
+					if(bookingDeleted)
+						System.out.print("Booking deleted");
+					else
+						System.out.print("Booking not found!!");
+
 					break;
 				case 2:
 					System.out.print("Which booking you want to Add a service To? (1-2-3): ");
@@ -186,9 +211,16 @@ public class BookWithUs {
 					System.out.print("Which booking you want to delete a service from? (1-2-3): ");
 					int dService = user.nextInt();
 					Booking r = user1.findBooking(dService);
+					if(r==null) {
+						System.out.println("Booking not found!!");
+						break;}
 					System.out.print("Which service you want to delete? (1-2-3): ");
 					int serviceId = user.nextInt();
-					r.DeleteService(serviceId);
+					boolean ServiceDeleted=r.DeleteService(serviceId);
+					if(ServiceDeleted)
+						System.out.print("Service deleted");
+					else
+						System.out.print("Service not found!");
 					break;
 				default:
 					System.out.println("invalid selection!!");

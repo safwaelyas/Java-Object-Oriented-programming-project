@@ -20,7 +20,7 @@ public class User {
 	}
 
 	public String toString() {
-		return "User [userId=" + userId + ", name=" + name + ", email=" + email + "]";
+		return  "User ID: " + userId + "\nName: " + name + "\nEmail: " + email;
 	}
 
 	// login method that validate User Id and Password to allow to enter the
@@ -61,12 +61,10 @@ public class User {
 	public boolean cancelBooking(int id) {
 		for (int i = 0; i < nOb; i++) {
 			if (bookList[i].getBookingId() == id) {
-				bookList[i].setStatus("cancelled");
-				System.out.print("Booking cancelled");
+				bookList[i].setStatus("Booking cancelled");
 				return true;
 			}
 		}
-		System.out.print("Booking not found!!");
 		return false;
 	}
 
@@ -76,11 +74,9 @@ public class User {
 				for (int j = i; j < nOb - 1; j++)
 					bookList[j] = bookList[j + 1];
 				bookList[--nOb] = null;
-				System.out.print("Booking deleted");
 				return true;
 			}
 		}
-		System.out.print("Booking not found!!");
 		return false;
 
 	}
@@ -89,11 +85,9 @@ public class User {
 		for (int i = 0; i < nOb; i++) {
 			if (bookList[i].getBookingId() == id) {
 				bookList[i].setStatus("Confirmed");
-				System.out.println("Booking Confirmed successfully!");
 				return true;
 			}
 		}
-		System.out.println("Booking Not found!");
 		return false;
 
 	}
