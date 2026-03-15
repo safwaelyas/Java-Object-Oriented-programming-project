@@ -1,4 +1,4 @@
-//Dina Alyabis - 446202768 Donne
+
 public class CarRental extends Service {
 	private char carType ;
 	private int rentalDays ;

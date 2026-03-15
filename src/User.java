@@ -33,7 +33,7 @@ public class User {
 			return false;
 		}
 
-		if (!this.password.equals(password)) {
+		 if (!this.password.equals(password)) {
 			System.out.println("Login failed, Password is incorrect!,Try again!");
 			return false;
 		}

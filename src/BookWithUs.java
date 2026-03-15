@@ -19,6 +19,14 @@ import java.util.*;
 public class BookWithUs {
 	static Scanner user= new Scanner(System.in);
 	
+	public static boolean passwordValid(String pass) {
+		char c;
+		for(int l=0;l<pass.length();l++) {
+			c=pass.charAt(l);
+			if(isUpperCase(c))
+				return true;}
+		return false;
+	}
 	public static Booking AddServices(Booking n) {
 		int serv;
 		do {
@@ -34,32 +42,45 @@ public class BookWithUs {
 				char room=toUpperCase(user.next().charAt(0));
 				System.out.print("How many nights you want to stay?:  ");
 				int night=user.nextInt();
+				if(night<1) {
+					System.out.println("invalid entry, nights must be 1 or more!!");
+				break;}
 				Service s;
 				s=new Hotel(room,night);
 				boolean state=n.addService(s);
-				if(state)
-					System.out.println("Service Added Successfully");
-				else
-					System.out.println("unable to add more services");
+				if(state) {
+					System.out.println("\nService Added Successfully");
+					System.out.print("\n-------------------------\n");}
+				else {
+					System.out.println("\nunable to add more services");
+					System.out.print("\n-------------------------\n");}
 				break;
 			case 2: 
 				System.out.print("Which Car type would you like to choose? (Luxury: L, regular: any button): ");
 				char car=toUpperCase(user.next().charAt(0));
 			    System.out.print("How many Days to rent the car?:  ");
 			    int days=user.nextInt();
+			    if(days<1) {
+					System.out.println("invalid entry, rental days must be 1 or more!!");
+				break;}
 			Service c;
 			c=new CarRental(car,days);
 			boolean stateC=n.addService(c);
-			if(stateC)
-				System.out.println("Service Added Successfully");
-			else
-				System.out.println("unable to add more services");
+			if(stateC){
+				System.out.println("\nService Added Successfully");
+				System.out.print("\n-------------------------\n");}
+			else {
+				System.out.println("\nunable to add more services");
+				System.out.print("\n-------------------------\n");}
 			break;
 			
 			case 3:
 				Service f;
 				System.out.print("What day you want to book the flight(1-30)?: ");
 			    int depart=user.nextInt();
+			    if(depart<1||depart>30) {
+					System.out.println("invalid entry, Specified date must be between 1-30 (days of the month)!!");
+				break;}
 				System.out.print("What Class you want to book?(First class[F],Bussiness[B],Economy[any button]): ");
 				char classtype=toUpperCase(user.next().charAt(0));
 				System.out.print("is your flight international? (yes, no): ");
@@ -74,10 +95,12 @@ public class BookWithUs {
 				else 
 				f=new Flight(depart,classtype);
 				boolean stateF=n.addService(f);
-				if(stateF)
-					System.out.println("Service Added Successfully");
-				else
-					System.out.println("unable to add more services");
+				if(stateF){
+					System.out.println("\nService Added Successfully");
+					System.out.print("\n-------------------------\n");}
+				else {
+					System.out.println("\nunable to add more services");
+					System.out.print("\n-------------------------\n");}
 				break;
 			default: break; }	
 		}while(serv!=4);
@@ -95,19 +118,41 @@ public class BookWithUs {
 		System.out.print("Email: ");
 		email = user.next();
 		user.nextLine();
+		int emailvalid=email.indexOf('@');
+		while(emailvalid==-1) {
+			System.out.println("Email must have an address '@'!");
+			System.out.println("Enter your Email: ");
+			email = user.next();
+			user.nextLine();
+			emailvalid=email.indexOf('@');
+		}
+			
 		System.out.print("Password: ");
 		pass = user.next();
 		user.nextLine();
+		int passwordLength=pass.length();
+		boolean isPasswordValid= passwordValid(pass);
+
+		while(passwordLength<8||!isPasswordValid) {
+			System.out.println("Password length should be 8 characters or more>>\nPassword must contain a capital letter>>\nTry again!");
+			System.out.println("Enter your Password: ");
+			pass = user.next();
+			user.nextLine();
+			passwordLength=pass.length();
+			isPasswordValid= passwordValid(pass);
+		}
 
 		User user1 = new User(name, email, pass, 3);
 		String id;
 		String password;
+		System.out.println("\n==================================================\n");
+
 		System.out.println("Login to your account");
 		do {
 			System.out.println("To exit the program, Enter x");
 			System.out.println();
 			System.out.print("Enter your name: ");
-			id = user.next();
+			id = user.nextLine();
 
 			if (id.equalsIgnoreCase("x")) {
 				System.out.print("Programe Teminated!! ");
@@ -119,18 +164,21 @@ public class BookWithUs {
 
 		} while (!user1.login(id, password));
 
-		System.out.println("Login successful!");
+		System.out.println("\nLogin successful!");
+		System.out.print("\n==================================================\n");
 		int choice;
 
 		do {
-			System.out.println("What would you like to do?");
+			System.out.println("What would you like to do>>?");
+			System.out.print("-------------------------\n");
 			System.out.println("1-Make booking");
 			System.out.println("2-Cancel booking");
 			System.out.println("3-Confirm booking");
 			System.out.println("4-Modify booking");
 			System.out.println("5-Show booking history");
 			System.out.println("6-Log out!");
-			System.out.println("Enter your choice: ");
+			System.out.println("-------------");
+			System.out.print("Enter your choice: ");
 			choice = user.nextInt();
 			switch (choice) {
 			case 1:
@@ -138,14 +186,17 @@ public class BookWithUs {
 				AddServices(b);
 				if (b.getNumberOfServices() > 0) {
 					user1.makeBooking(b);
+					System.out.print("\n=====================================\n");
 					System.out.print(b.toString());
+					
 				}
 				break;
 
 			// cancel booking option :
 			case 2:
 				if (user1.getNob() == 0) {
-					System.out.println("No Bookings Available!!");
+					System.out.print("\nNo Bookings Available!!");
+					System.out.print("\n=====================================\n");
 					System.out.println();
 					break;
 				}
@@ -153,16 +204,19 @@ public class BookWithUs {
 				System.out.print("Which booking you want to cancel? (1-2-3): ");
 				int idBook = user.nextInt();
 				boolean isCancelled=user1.cancelBooking(idBook); 
-				if(isCancelled)
-					System.out.print("Booking cancelled");
-				else
-					System.out.print("Booking not found!!");
+				if(isCancelled) {
+					System.out.print("\nBooking cancelled");
+					System.out.print("\n=====================================\n");
+				}
+				else {
+					System.out.print("\nBooking not found!!");
+					System.out.print("\n=====================================\n");}
 
 				break;
 			// confirm a booking(by default booking is not confirmed).
 			case 3:
 				if (user1.getNob() == 0) {
-					System.out.println("No Bookings Available!!");
+					System.out.println("\nNo Bookings Available!!");
 					System.out.println();
 					break;
 				}
@@ -170,57 +224,66 @@ public class BookWithUs {
 				System.out.print("Which booking you want to confirm? (1-2-3): ");
 				int cBook = user.nextInt();
 				boolean isConfirmed=user1.confirmBooking(cBook);
-				if(isConfirmed)
-					System.out.println("Booking Confirmed successfully!");
-				else
-					System.out.println("Booking Not found!");
+				if(isConfirmed) {
+					System.out.print("\nBooking Confirmed successfully!");
+					System.out.print("\n=====================================\n");}
+				else {
+					System.out.print("\nBooking Not found!");
+					System.out.print("\n=====================================\n");}
 				break;
 			case 4:
 				if (user1.getNob() == 0) {
-					System.out.println("No Bookings Available!!");
+					System.out.println("\nNo Bookings Available!!");
 					System.out.println();
 					break;
 				}
 
 				System.out.println("What you would like to do? ");
+				System.out.print("-------------------------\n");
 				System.out.println("1-delete booking ");
 				System.out.println("2-Add service ");
 				System.out.println("3-delete service ");
 				int option = user.nextInt();
 				switch (option) {
 				case 1:
-					System.out.print("Which booking you want to delete? (1-2-3): ");
+					System.out.println("Which booking you want to delete? (1-2-3): ");
 					int dBook = user.nextInt();
 					boolean bookingDeleted=user1.deleteBooking(dBook);
-					if(bookingDeleted)
+					if(bookingDeleted) {
 						System.out.print("Booking deleted");
-					else
+						System.out.print("\n=====================================\n");}
+					else {
 						System.out.print("Booking not found!!");
+						System.out.print("\n=====================================\n");}
 
 					break;
 				case 2:
-					System.out.print("Which booking you want to Add a service To? (1-2-3): ");
+					System.out.println("Which booking you want to Add a service To? (1-2-3): ");
 					int aService = user.nextInt();
 					Booking v = user1.findBooking(aService);
 					if (v != null)
 						AddServices(v);
-					else
+					else {
 						System.out.print("Booking not found!! ");
+						System.out.print("\n=====================================\n");}
 					break;
 				case 3:
-					System.out.print("Which booking you want to delete a service from? (1-2-3): ");
+					System.out.println("Which booking you want to delete a service from? (1-2-3): ");
 					int dService = user.nextInt();
 					Booking r = user1.findBooking(dService);
 					if(r==null) {
-						System.out.println("Booking not found!!");
+						System.out.print("Booking not found!!");
+						System.out.print("\n=====================================\n");
 						break;}
-					System.out.print("Which service you want to delete? (1-2-3): ");
+					System.out.println("Which service you want to delete? (1-2-3): ");
 					int serviceId = user.nextInt();
 					boolean ServiceDeleted=r.DeleteService(serviceId);
-					if(ServiceDeleted)
+					if(ServiceDeleted) {
 						System.out.print("Service deleted");
-					else
+						System.out.print("\n=====================================\n");}
+					else {
 						System.out.print("Service not found!");
+						System.out.print("\n=====================================\n");}
 					break;
 				default:
 					System.out.println("invalid selection!!");

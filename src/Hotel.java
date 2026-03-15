@@ -1,4 +1,4 @@
-//Dina Alyabis - 446202768 Doneee
+
 public class Hotel extends Service {
 
 private char roomType ;

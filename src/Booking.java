@@ -35,6 +35,7 @@ public class Booking implements payable {
 					serviceToAdd=new internationalFlights((internationalFlights)s);
 				serviceToAdd.setserviceId(nOs+1);
 				servBooked[nOs++]=serviceToAdd;
+				updateTotalPrice();
 			return true;
 			}
 			return false;	
@@ -62,11 +63,11 @@ public class Booking implements payable {
 
 		}
 		
+		private void updateTotalPrice() {
+		    totalPrice = calculateCost();
+		}
 		
-		
-		
-		
-		
+	
 		
 		public boolean DeleteService(int id) {
 			for(int i=0;i<nOs;i++) {
@@ -74,6 +75,9 @@ public class Booking implements payable {
 					for(int j=i;j<nOs-1;j++)
 						servBooked[j]=servBooked[j+1];
 				servBooked[--nOs]=null;
+				for(int k=0;k<nOs;k++) 
+	                servBooked[k].setserviceId(k+1);
+				updateTotalPrice();
 						return true;}
 					}
 			return false;
@@ -95,7 +99,7 @@ public class Booking implements payable {
 			String s="";
 			for(int i=0;i<nOs;i++)
 				s+= servBooked[i].getserviceId()+"-"+servBooked[i].getname()+"\n";
-			return "Booking details:\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status+"\nNumber of Services: "+nOs+""+s+"\nTotal price: "+calculateCost()+"\n";}
+			return "Booking details:\n---------------\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status+"\nNumber of Services: "+nOs+"\n"+s+"\nTotal price: "+calculateCost()+"\n";}
 		
 		
 		public double getTotalPrice() {

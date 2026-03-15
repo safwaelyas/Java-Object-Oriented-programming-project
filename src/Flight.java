@@ -1,4 +1,4 @@
-//Dina Alyabis - 446202768 Donnnnne
+
 public class Flight extends Service{
 
 protected int departure ;

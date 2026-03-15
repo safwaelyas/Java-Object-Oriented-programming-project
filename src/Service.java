@@ -1,4 +1,4 @@
-//Dina Alyabis - 446202768
+
 public abstract class Service implements payable {
 	
 	protected int serviceId;
