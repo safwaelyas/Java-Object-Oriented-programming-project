@@ -1,41 +1,40 @@
 
 public abstract class Service implements payable {
 	
-	protected int serviceId;
-	protected String serviceType;
-	protected double price;
+	// declaring variables
+	protected int serviceId; // each service has its own iD 
+	protected String serviceType; // the type might be hotel, flight,and car rental 
+	protected double price; // the price of the service 
 
-	public Service() {// defaulte cons
+	public Service() {// defaulte constructor 
 		this.serviceType = "";
 		this.price = calculateCost();
 	}
 
-	public Service(String name) {// cons
+	public Service(String name) {// a constructor that receive a name of the service
 
 		this.serviceType = name;
 		this.price = calculateCost();
 	}
 
-	public final String getDetails() {
+	public final String getDetails() {{// to show all the information of the service 
 		return " serviceId : " + serviceId + " ,serviceType : " + serviceType + " , price :" + price;
 	}
 
-	public abstract double calculateCost();
+	public abstract double calculateCost();// an abstract method that will be used in the sup classes 
 
 	public int getserviceId() {// getter
 		return serviceId;
-	}// e
+	}
 
 	public String getname() {// getter
 		return serviceType;
-	}// e
+	}
 
-	public void setserviceId(int serviceId) { // s setter
+	public void setserviceId(int serviceId) { // setter
 		this.serviceId = serviceId;
-	}// e setter
+	}
 
 	
 
-	
-
-}
+}//end class
