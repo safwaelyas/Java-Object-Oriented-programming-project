@@ -8,17 +8,17 @@ public abstract class Service implements payable {
 
 	public Service() {// defaulte constructor 
 		this.serviceType = "";
-		this.price = calculateCost();
+		this.price =0.0;
 	}
 
 	public Service(String name) {// a constructor that receive a name of the service
 
 		this.serviceType = name;
-		this.price = calculateCost();
+		this.price =0.0;
 	}
 
-	public final String getDetails() {{// to show all the information of the service 
-		return " serviceId : " + serviceId + " ,serviceType : " + serviceType + " , price :" + price;
+	public final String getDetails() {// to show all the information of the service 
+		return " serviceId : " + serviceId + " |||| serviceType : " + serviceType + "\n |price| :" + price;
 	}
 
 	public abstract double calculateCost();// an abstract method that will be used in the sup classes 
@@ -35,6 +35,13 @@ public abstract class Service implements payable {
 		this.serviceId = serviceId;
 	}
 
-	
-
+	public void setPrice(double amount) {//setter
+		price=amount;
+	}
+	public double getPrice() {//getter
+		return price;
+	}
+	public void setServiceType(String s) {//setter
+		serviceType=s;
+	}
 }//end class

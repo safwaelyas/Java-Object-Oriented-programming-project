@@ -32,7 +32,7 @@ public class Hotel extends Service {
 	}
 
 	public String toString() {// to show all the information of the hotel service
-		return super.getDetails() + " \n , roomType : " + roomType + " , nights :  " + nights;
+		return super.getDetails() + " \n roomType : " + roomType + "\n nights :  " + nights;
 	}
 
 }// end class

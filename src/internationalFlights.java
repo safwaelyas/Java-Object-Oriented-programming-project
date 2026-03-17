@@ -23,7 +23,7 @@ public class internationalFlights extends Flight {
 	}
 
 	public String toString() {// to show all the information of the international flight service
-		return super.toString() + " \n , Visa : " + Visa;
+		return super.toString() + " \n Visa : " + Visa;
 	}
 
 }// end class

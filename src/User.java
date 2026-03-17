@@ -61,7 +61,7 @@ public class User {
 	public boolean cancelBooking(int id) {
 		for (int i = 0; i < nOb; i++) {
 			if (bookList[i].getBookingId() == id) {
-				bookList[i].setStatus("Booking cancelled");
+				bookList[i].setStatus("Cancelled");
 				return true;
 			}
 		}

@@ -17,7 +17,7 @@ public class Booking implements payable {
 	LocalDate today = LocalDate.now();
 	date=today;
 	status="Not confirmed";
-	totalPrice=calculateCost();
+	totalPrice=0.0;
 	servBooked=new Service[3];
 	nOs = 0;
 		}
@@ -27,14 +27,17 @@ public class Booking implements payable {
 				Service serviceToAdd=null;
 				if(s instanceof Hotel) 
 					serviceToAdd=new Hotel((Hotel)s);
-					else if(s instanceof Flight)
-						serviceToAdd=new Flight((Flight)s);
+					else if(s instanceof internationalFlights) {
+						serviceToAdd=new internationalFlights((internationalFlights)s);
+						serviceToAdd.setServiceType("International Flight");
+					}
 				else if(s instanceof CarRental)
 					serviceToAdd=new CarRental((CarRental)s);
-				else if(s instanceof internationalFlights)
-					serviceToAdd=new internationalFlights((internationalFlights)s);
+				else if(s instanceof Flight)
+					serviceToAdd=new Flight((Flight)s);
 				serviceToAdd.setserviceId(nOs+1);
 				servBooked[nOs++]=serviceToAdd;
+				serviceToAdd.setPrice(serviceToAdd.calculateCost());
 				updateTotalPrice();
 			return true;
 			}
@@ -98,8 +101,8 @@ public class Booking implements payable {
 		public String toString() {
 			String s="";
 			for(int i=0;i<nOs;i++)
-				s+= servBooked[i].getserviceId()+"-"+servBooked[i].getname()+"\n";
-			return "Booking details:\n---------------\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking:"+status+"\nNumber of Services: "+nOs+"\n"+s+"\nTotal price: "+calculateCost()+"\n";}
+				s+= servBooked[i].toString()+"\n------------------------\n";
+			return "Booking details:\n---------------\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking: "+status+"\nNumber of Services: "+nOs+"\n-------------------\n"+s+"\nBooking Total price: "+calculateCost()+"\n";}
 		
 		
 		public double getTotalPrice() {

@@ -50,6 +50,7 @@ public class BookWithUs {
 				boolean state=n.addService(s);
 				if(state) {
 					System.out.println("\nService Added Successfully");
+					//System.out.print(n.servBooked[n.nOs-1].getPrice());
 					System.out.print("\n-------------------------\n");}
 				else {
 					System.out.println("\nunable to add more services");
@@ -97,6 +98,7 @@ public class BookWithUs {
 				boolean stateF=n.addService(f);
 				if(stateF){
 					System.out.println("\nService Added Successfully");
+					//System.out.print(n.servBooked[n.nOs-1].getPrice());
 					System.out.print("\n-------------------------\n");}
 				else {
 					System.out.println("\nunable to add more services");
@@ -110,7 +112,7 @@ public class BookWithUs {
 	}
 	
 	public static void main(String[] args) {
-		String name, email, pass;
+	/*	String name, email, pass;
 		System.out.println("Welcome to Book with us System, please create account to proceed..");
 		System.out.println("Enter your information below to sign up!");
 		System.out.print("Name: ");
@@ -134,20 +136,22 @@ public class BookWithUs {
 		boolean isPasswordValid= passwordValid(pass);
 
 		while(passwordLength<8||!isPasswordValid) {
-			System.out.println("Password length should be 8 characters or more>>\nPassword must contain a capital letter>>\nTry again!");
+			System.out.println("\n invalid Password.\nPassword must be at least 8 characters>>\nPassword must contain a capital letter>>\nTry again!");
 			System.out.println("Enter your Password: ");
 			pass = user.next();
 			user.nextLine();
 			passwordLength=pass.length();
 			isPasswordValid= passwordValid(pass);
 		}
-
-		User user1 = new User(name, email, pass, 3);
+*/
+		
+		User user1 = new User("ss", "ss", "ss", 3);
+		/*S
 		String id;
 		String password;
 		System.out.println("\n==================================================\n");
 
-		System.out.println("Login to your account");
+		System.out.println("Login to your account");   //Hana Mohamed Hana@gmail.com 1234SDrfl
 		do {
 			System.out.println("To exit the program, Enter x");
 			System.out.println();
@@ -161,11 +165,12 @@ public class BookWithUs {
 
 			System.out.print("Enter Password: ");
 			password = user.next();
-
+			user.nextLine();
 		} while (!user1.login(id, password));
 
 		System.out.println("\nLogin successful!");
 		System.out.print("\n==================================================\n");
+		*/
 		int choice;
 
 		do {
