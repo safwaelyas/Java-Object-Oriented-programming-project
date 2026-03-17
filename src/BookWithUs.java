@@ -9,11 +9,6 @@ Lab INUSTRUCTUR: Ghada Abdullah S Alamer.
 
 //Class with the main method implemented.
 
-
-
-//must add a message whrn service is added successfully, messages must be displayed in the main not the classes in
-//in case of , cancell booking, delete booking, confirm booking,make a service, delete a service or any action.
-
 import static java.lang.Character.*;
 import java.util.*;
 public class BookWithUs {
