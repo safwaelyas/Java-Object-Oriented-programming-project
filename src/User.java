@@ -9,7 +9,7 @@ public class User {
 	private int nOb;
 	private Booking[] bookList;
 
-//constructor to initiate the values of the attribuites.
+//constructor to initiate the values of the attributes.
 	public User(String na, String Em, String pass, int size) {
 		userId = UUID.randomUUID().toString();
 		name = na;

@@ -1,17 +1,17 @@
 import java.time.LocalDate;
 public class Booking implements payable {
-	//Attributes
-	private final double CarTax=500;
-	public static int counter=1;
-	private int bookingId;
-	private LocalDate date;
-	private String status;
-	private double totalPrice ;
-	public Service[] servBooked ;
+	//declaring variables
+	private final double CarTax=500;//Tax added in case of choosing a car rental service.
+	public static int counter=1;//counter placed in the Booking ID.
+	private int bookingId;//For each Booking,so the user chooses the service based on the ID
+	private LocalDate date;//a class represents the actual date when the user add a Booking to his array.
+	private String status;//the state of the Booking if it not\COnfirmed or Canceled
+	private double totalPrice ;//THE total price of the services in each Booking.
+	public Service[] servBooked ;//Array have a size of three services objects to install in each Booking
 	public int nOs;
 
 
-	//Constructors
+	//default constructor.
 		public Booking() {
 	bookingId=counter++;
 	LocalDate today = LocalDate.now();
@@ -22,9 +22,9 @@ public class Booking implements payable {
 	nOs = 0;
 		}
 		
-		public boolean addService(Service s) {
+		public boolean addService(Service s) {//a method to add a service in the Array by it`s type and calculating it`s price return false if the Array is fall.
 			if(nOs<servBooked.length) {
-				Service serviceToAdd=null;
+				Service serviceToAdd=null;//used a coped version of the object"becuse of the Composition relation between the tow clases".
 				if(s instanceof Hotel) 
 					serviceToAdd=new Hotel((Hotel)s);
 					else if(s instanceof internationalFlights) {
@@ -44,8 +44,8 @@ public class Booking implements payable {
 			return false;	
 		}
 	
-		
-		public double calculateCost() {
+		//Abstract Method
+		public double calculateCost() {//A method return the price of the car rental object after adding the  car tax  if it there is a car rental object in the Booking.
 			boolean CarFound=false;
 			for(int i=0;i<nOs;i++) {
 				if(servBooked[i].getname().equalsIgnoreCase("car"))
@@ -56,7 +56,7 @@ public class Booking implements payable {
 				return calculatePrice(0);
 		}
 		
-		public double calculatePrice(int index) {
+		public double calculatePrice(int index) {//recursive method to calculate the total price of the services in each Booking.
 		    // base case
 		    if(index == nOs)
 		        return 0;
@@ -72,13 +72,13 @@ public class Booking implements payable {
 		
 	
 		
-		public boolean DeleteService(int id) {
+		public boolean DeleteService(int id) {//deleting the service in the array by shifting.
 			for(int i=0;i<nOs;i++) {
 				if(servBooked[i].getserviceId()==id) {
 					for(int j=i;j<nOs-1;j++)
 						servBooked[j]=servBooked[j+1];
 				servBooked[--nOs]=null;
-				for(int k=0;k<nOs;k++) 
+				for(int k=0;k<nOs;k++) //updating the ID of the services in the array.
 	                servBooked[k].setserviceId(k+1);
 				updateTotalPrice();
 						return true;}
@@ -87,25 +87,25 @@ public class Booking implements payable {
 			}
 			
 
-		public void setStatus(String status) {
+		public void setStatus(String status) {//setter for the state of the book.
 			this.status = status;
 		}
 
-	public int getBookingId() {
+	public int getBookingId() {//getter for the ID of the book.
 			return bookingId;
 		}
 
-		public int getNumberOfServices() {
+		public int getNumberOfServices() {//getter of number of services in each Book
 			return nOs;
 		}
-		public String toString() {
+		public String toString() {//method to print booking details and the details of each service.
 			String s="";
 			for(int i=0;i<nOs;i++)
 				s+= servBooked[i].toString()+"\n------------------------\n";
 			return "Booking details:\n---------------\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking: "+status+"\nNumber of Services: "+nOs+"\n-------------------\n"+s+"\nBooking Total price: "+calculateCost()+"\n";}
 		
 		
-		public double getTotalPrice() {
+		public double getTotalPrice() {//getter of the total price.
 			return totalPrice;
 		}
 		
