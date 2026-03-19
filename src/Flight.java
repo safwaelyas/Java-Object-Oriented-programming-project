@@ -35,7 +35,7 @@ public class Flight extends Service {
 	}
 
 	public String toString() {// to show all the information of the flight service
-		return super.getDetails() + "\n departure :  " + departure +"\\2026"+"\n Class Type: " + ClassType;
+		return super.getDetails() + "\n |departure| :  " + departure +"\\2026"+"\n |Class Type|: " + ClassType;
 	}
 
 }// end class
