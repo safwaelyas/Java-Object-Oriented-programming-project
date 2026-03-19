@@ -32,7 +32,8 @@ public class CarRental extends Service {
 	}
 
 	public String toString() {// to show all the information of the car rental service
-		return super.getDetails() + " \n , carType : " + carType + "\n , rentalDays :  " + rentalDays;
+		return super.getDetails() + " \n |carType| : " + carType+ "\n |rentalDays| :  " + 
+			rentalDays+"\n |Tax|:500";
 	}
 
 }// end class
