@@ -107,7 +107,7 @@ public class BookWithUs {
 	}
 	
 	public static void main(String[] args) {
-	/*	String name, email, pass;
+	String name, email, pass;
 		System.out.println("Welcome to Book with us System, please create account to proceed..");
 		System.out.println("Enter your information below to sign up!");
 		System.out.print("Name: ");
@@ -138,10 +138,10 @@ public class BookWithUs {
 			passwordLength=pass.length();
 			isPasswordValid= passwordValid(pass);
 		}
-*/
+
 		
-		User user1 = new User("ss", "ss", "ss", 3);
-		/*S
+		User user1 = new User(name, email, pass, 3);
+		
 		String id;
 		String password;
 		System.out.println("\n==================================================\n");
@@ -165,7 +165,7 @@ public class BookWithUs {
 
 		System.out.println("\nLogin successful!");
 		System.out.print("\n==================================================\n");
-		*/
+		
 		int choice;
 
 		do {
