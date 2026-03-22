@@ -102,7 +102,7 @@ public class Booking implements payable {
 			String s="";
 			for(int i=0;i<nOs;i++)
 				s+= servBooked[i].toString()+"\n------------------------\n";
-			return "Booking details:\n---------------\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking: "+status+"\nNumber of Services: "+nOs+"\n-------------------\n"+s+"\nBooking Total price: "+calculateCost()+"\n";}
+			return "Booking details:\n---------------\nBooking ID: "+bookingId+"\nDate: "+date+"\nStatus OF Booking: "+status+"\nNumber of Services: "+nOs+"\n-------------------\n"+s+"\nBooking Total price: "+calculateCost()+" \"Car Tax Included\"\n";}
 		
 		
 		public double getTotalPrice() {//getter of the total price.
