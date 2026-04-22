@@ -1,5 +1,6 @@
+import java.io.Serializable;
 import java.time.LocalDate;
-public class Booking implements payable {
+public class Booking implements payable, Serializable {
 	//declaring variables
 	private final double CarTax=500;//Tax added in case of choosing a car rental service.
 	public static int counter=1;//counter placed in the Booking ID.

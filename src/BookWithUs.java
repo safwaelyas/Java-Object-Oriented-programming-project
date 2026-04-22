@@ -65,7 +65,7 @@ catch(Exception e) {
 			id = user.nextLine().trim();
 			if (id.equalsIgnoreCase("x")) {
 				System.out.print("Programe Teminated!! ");
-				System.exit(0);
+				System.exit(0); //maha alasmy 1235eAdccvfff
 			}
 			else if(id.equalsIgnoreCase("yes"))
 			{

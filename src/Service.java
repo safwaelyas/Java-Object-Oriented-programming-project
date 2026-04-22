@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public abstract class Service implements payable {
+public abstract class Service implements payable, Serializable {
 	
 	// declaring variables
 	protected int serviceId; // each service has its own iD 
