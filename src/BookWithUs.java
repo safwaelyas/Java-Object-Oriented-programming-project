@@ -1,3 +1,4 @@
+
 /* Students information:
 1- ARWA SAADAN ABDULLAH AL-SAADAN./ ID: 446201958.
 2- SAFWA MOHAMEDAHMED ELYAS ABDALLA./ ID:446207694.
@@ -6,14 +7,126 @@
 SECTION NUMBER:46412
 Lab INUSTRUCTUR: Ghada Abdullah S Alamer.
 */
-
 //Class with the main method implemented.
-
+import java.io.*;
 import static java.lang.Character.*;
 import java.util.*;
 public class BookWithUs {
 	static Scanner user= new Scanner(System.in);
-	
+	        
+	public static void clearUsersFile() {
+    try {
+        new FileOutputStream("users.dat").close();
+    } catch (Exception e) {
+        System.out.println("Could not clear file.");
+    }
+}   
+ public static int loadUsers(User[] users){
+int count=0;
+try{
+ObjectInputStream ois = new ObjectInputStream(new FileInputStream("users.dat"));
+count=ois.readInt();
+for(int i=0;i<count;i++) 
+users[i]=(User) ois.readObject();
+ois.close();
+}
+catch(Exception e) { 
+
+}
+return count;
+ }
+
+ public static void saveUsers(User[] users,int count){
+try{
+ ObjectOutputStream oos= new ObjectOutputStream(new FileOutputStream("users.dat"));
+ oos.writeInt(count);
+ for(int i=0;i<count;i++) 
+ oos.writeObject(users[i]);
+ oos.close();
+}
+
+catch(Exception e) {
+	System.out.println("Error saving users!!");
+}
+ }
+
+ public static User login(User[] users,int count){
+        String id;
+		String password;
+		User tryUser=null;
+		do{
+		System.out.println("\n==================================================\n");
+		System.out.println("Login to your account");  
+		System.out.println("To exit the program, Enter x");
+		System.out.println("To go to the sign up page, Enter Yes");
+
+			System.out.println();
+			System.out.print("Enter your name: ");
+			id = user.nextLine().trim();
+			if (id.equalsIgnoreCase("x")) {
+				System.out.print("Programe Teminated!! ");
+				System.exit(0);
+			}
+			else if(id.equalsIgnoreCase("yes"))
+			{
+				return null;
+			}
+			System.out.print("Enter Password: ");
+			password = user.next();
+			user.nextLine();
+		for(int i=0;i<count;i++){
+		  if(users[i].getName().equals(id))
+		     tryUser=users[i];
+		    }
+		    if(tryUser==null)
+		    System.out.println("Login failed, ID not found!!");
+		    else if(tryUser.login(password)){
+		    System.out.println("\nLogin successful!");}
+		    else tryUser=null;
+		    }while(tryUser==null);
+	return tryUser;
+ }
+ 
+
+ public static int signUp(User[] users,int count){
+ if(count==users.length){
+ System.out.print("Can't sign up, user limit reached!!");
+ return -1;}
+ String name, email, pass;
+		System.out.println("Welcome to Book with us System, please create account to proceed..");
+		System.out.println("Enter your information below to sign up!");
+		System.out.print("Name: ");
+		name = user.nextLine().trim();
+		System.out.print("Email: ");
+		email = user.next();
+		int emailvalid=email.indexOf('@');
+		while(emailvalid==-1) {
+			System.out.println("Email must have an address '@'!");
+			System.out.println("Enter your Email: ");
+			email = user.next();
+			user.nextLine();
+			emailvalid=email.indexOf('@');
+		}
+			
+		System.out.print("Password: ");
+		pass = user.next();
+		user.nextLine();
+		int passwordLength=pass.length();
+		boolean isPasswordValid= passwordValid(pass);
+
+		while(passwordLength<8||!isPasswordValid) {
+			System.out.println("\n invalid Password.\nPassword must be at least 8 characters>>\nPassword must contain a capital letter>>\nTry again!");
+			System.out.println("Enter your Password: ");
+			pass = user.next();
+			user.nextLine();
+			passwordLength=pass.length();
+			isPasswordValid= passwordValid(pass);
+		}
+		users[count++]=new User(name, email, pass, 3);
+		saveUsers(users,count);
+		return count;
+ }
+ 
 	public static boolean passwordValid(String pass) {
 		char c;
 		for(int l=0;l<pass.length();l++) {
@@ -22,6 +135,8 @@ public class BookWithUs {
 				return true;}
 		return false;
 	}
+	
+	
 	public static Booking AddServices(Booking n) {
 		int serv;
 		do {
@@ -106,64 +221,31 @@ public class BookWithUs {
 		
 	}
 	
-	public static void main(String[] args) {
-	String name, email, pass;
-		System.out.println("Welcome to Book with us System, please create account to proceed..");
-		System.out.println("Enter your information below to sign up!");
-		System.out.print("Name: ");
-		name = user.nextLine();
-		System.out.print("Email: ");
-		email = user.next();
-		user.nextLine();
-		int emailvalid=email.indexOf('@');
-		while(emailvalid==-1) {
-			System.out.println("Email must have an address '@'!");
-			System.out.println("Enter your Email: ");
-			email = user.next();
-			user.nextLine();
-			emailvalid=email.indexOf('@');
-		}
-			
-		System.out.print("Password: ");
-		pass = user.next();
-		user.nextLine();
-		int passwordLength=pass.length();
-		boolean isPasswordValid= passwordValid(pass);
+	public static void main(String[] args)throws IOException {
+		//clearUsersFile();
+		User[] users=new User[100];
+		int count=loadUsers(users);
+		User currentUser=null;
 
-		while(passwordLength<8||!isPasswordValid) {
-			System.out.println("\n invalid Password.\nPassword must be at least 8 characters>>\nPassword must contain a capital letter>>\nTry again!");
-			System.out.println("Enter your Password: ");
-			pass = user.next();
-			user.nextLine();
-			passwordLength=pass.length();
-			isPasswordValid= passwordValid(pass);
-		}
-
+		do{
+System.out.println("Welcome to Book with us System, please create account to proceed.. do you already have an account?(\"Yes, No\"): ");
+String answer=user.next();
+user.nextLine();
+if(answer.equalsIgnoreCase("No")) {
+	count=signUp(users,count);
+	if(count!=-1){
+		System.out.println("\nAccount created successfully! Please login to your account to proceed..");
+		currentUser=login(users,count);
+	}
+	else {
+		System.out.print("Unable to sign up, user limit reached!!");
+		System.exit(0);}
+}
+	else{
+	currentUser=login(users,count);
+	}
+}while(currentUser==null);
 		
-		User user1 = new User(name, email, pass, 3);
-		
-		String id;
-		String password;
-		System.out.println("\n==================================================\n");
-
-		System.out.println("Login to your account");   //Hana Mohamed Hana@gmail.com 1234SDrfl
-		do {
-			System.out.println("To exit the program, Enter x");
-			System.out.println();
-			System.out.print("Enter your name: ");
-			id = user.nextLine();
-
-			if (id.equalsIgnoreCase("x")) {
-				System.out.print("Programe Teminated!! ");
-				System.exit(0);
-			}
-
-			System.out.print("Enter Password: ");
-			password = user.next();
-			user.nextLine();
-		} while (!user1.login(id, password));
-
-		System.out.println("\nLogin successful!");
 		System.out.print("\n==================================================\n");
 		
 		int choice;
@@ -185,7 +267,8 @@ public class BookWithUs {
 				Booking b = new Booking();
 				AddServices(b);
 				if (b.getNumberOfServices() > 0) {
-					user1.makeBooking(b);
+					currentUser.makeBooking(b);
+					saveUsers(users,count);
 					System.out.print("\n=====================================\n");
 					System.out.print(b.toString());
 					
@@ -194,7 +277,7 @@ public class BookWithUs {
 
 			// cancel booking option :
 			case 2:
-				if (user1.getNob() == 0) {
+				if (currentUser.getNob() == 0) {
 					System.out.print("\nNo Bookings Available!!");
 					System.out.print("\n=====================================\n");
 					System.out.println();
@@ -203,9 +286,10 @@ public class BookWithUs {
 
 				System.out.print("Which booking you want to cancel? (1-2-3): ");
 				int idBook = user.nextInt();
-				boolean isCancelled=user1.cancelBooking(idBook); 
+				boolean isCancelled=currentUser.cancelBooking(idBook); 
 				if(isCancelled) {
 					System.out.print("\nBooking cancelled");
+					saveUsers(users,count);
 					System.out.print("\n=====================================\n");
 				}
 				else {
@@ -215,7 +299,7 @@ public class BookWithUs {
 				break;
 			// confirm a booking(by default booking is not confirmed).
 			case 3:
-				if (user1.getNob() == 0) {
+				if (currentUser.getNob() == 0) {
 					System.out.println("\nNo Bookings Available!!");
 					System.out.println();
 					break;
@@ -223,16 +307,17 @@ public class BookWithUs {
 
 				System.out.print("Which booking you want to confirm? (1-2-3): ");
 				int cBook = user.nextInt();
-				boolean isConfirmed=user1.confirmBooking(cBook);
+				boolean isConfirmed=currentUser.confirmBooking(cBook);
 				if(isConfirmed) {
 					System.out.print("\nBooking Confirmed successfully!");
+					saveUsers(users,count);
 					System.out.print("\n=====================================\n");}
 				else {
 					System.out.print("\nBooking Not found!");
 					System.out.print("\n=====================================\n");}
 				break;
 			case 4:
-				if (user1.getNob() == 0) {
+				if (currentUser.getNob() == 0) {
 					System.out.println("\nNo Bookings Available!!");
 					System.out.println();
 					break;
@@ -248,9 +333,10 @@ public class BookWithUs {
 				case 1:
 					System.out.println("Which booking you want to delete? (1-2-3): ");
 					int dBook = user.nextInt();
-					boolean bookingDeleted=user1.deleteBooking(dBook);
+					boolean bookingDeleted=currentUser.deleteBooking(dBook);
 					if(bookingDeleted) {
 						System.out.print("Booking deleted");
+						saveUsers(users,count);
 						System.out.print("\n=====================================\n");}
 					else {
 						System.out.print("Booking not found!!");
@@ -260,9 +346,10 @@ public class BookWithUs {
 				case 2:
 					System.out.println("Which booking you want to Add a service To? (1-2-3): ");
 					int aService = user.nextInt();
-					Booking v = user1.findBooking(aService);
-					if (v != null)
+					Booking v = currentUser.findBooking(aService);
+					if (v != null){
 						AddServices(v);
+						saveUsers(users,count);}
 					else {
 						System.out.print("Booking not found!! ");
 						System.out.print("\n=====================================\n");}
@@ -270,7 +357,7 @@ public class BookWithUs {
 				case 3:
 					System.out.println("Which booking you want to delete a service from? (1-2-3): ");
 					int dService = user.nextInt();
-					Booking r = user1.findBooking(dService);
+					Booking r = currentUser.findBooking(dService);
 					if(r==null) {
 						System.out.print("Booking not found!!");
 						System.out.print("\n=====================================\n");
@@ -280,6 +367,7 @@ public class BookWithUs {
 					boolean ServiceDeleted=r.DeleteService(serviceId);
 					if(ServiceDeleted) {
 						System.out.print("Service deleted");
+						saveUsers(users,count);
 						System.out.print("\n=====================================\n");}
 					else {
 						System.out.print("Service not found!");
@@ -292,20 +380,20 @@ public class BookWithUs {
 				break;
 
 			case 5:
-				if (user1.getNob() == 0) {
+				if (currentUser.getNob() == 0) {
 					System.out.println("No bookings found!!");
 					System.out.println();
 					break;
 				}
 
-				Booking[] array = user1.getBookList();
-				for (int i = 0; i < user1.getNob(); i++) {
+				Booking[] array = currentUser.getBookList();
+				for (int i = 0; i < currentUser.getNob(); i++) {
 					System.out.println(array[i].toString());
 				}
 
 				break;
 			case 6:
-				user1.logout();
+				currentUser.logout();
 				return;
 			default:
 				System.out.println("Invalid entry!! ");

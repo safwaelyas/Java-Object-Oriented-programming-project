@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.UUID;
 
-public class User {
+public class User implements Serializable {
 	// attribuites section.
 	private String userId;
 	private String name;
@@ -18,21 +19,14 @@ public class User {
 		nOb = 0;
 		bookList = new Booking[size];
 	}
-
+//add copy constructur
 	public String toString() {
 		return  "User ID: " + userId + "\nName: " + name + "\nEmail: " + email;
 	}
 
 	// login method that validate User Id and Password to allow to enter the
 	// personal booking system account.
-	public boolean login(String name, String password) {
-
-		if (!this.name.equals(name)) {
-
-			System.out.println("Login failed, ID is incorrect!, Try again!");
-			return false;
-		}
-
+	public boolean login(String password) {
 		 if (!this.password.equals(password)) {
 			System.out.println("Login failed, Password is incorrect!,Try again!");
 			return false;
