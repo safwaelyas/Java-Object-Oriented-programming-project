@@ -9,6 +9,7 @@ Lab INUSTRUCTUR: Ghada Abdullah S Alamer.
 */
 //Class with the main method implemented.
 import java.io.*;
+
 import static java.lang.Character.*;
 import java.util.*;
 public class BookWithUs {
@@ -30,8 +31,15 @@ for(int i=0;i<count;i++)
 users[i]=(User) ois.readObject();
 ois.close();
 }
-catch(Exception e) { 
-
+catch (FileNotFoundException e) {
+    System.out.println("File not found, starting with empty users.");
+}
+catch (IOException e) {
+    System.out.println("Error reading file.");
+    e.printStackTrace();
+}
+catch (ClassNotFoundException e) {
+    System.out.println("User class not found.");
 }
 return count;
  }
@@ -54,15 +62,15 @@ catch(Exception e) {
         String id;
 		String password;
 		User tryUser=null;
+		
 		do{
 		System.out.println("\n==================================================\n");
 		System.out.println("Login to your account");  
 		System.out.println("To exit the program, Enter x");
 		System.out.println("To go to the sign up page, Enter Yes");
-
+		System.out.println("Enter your name ");
+		id = user.nextLine().trim();
 			System.out.println();
-			System.out.print("Enter your name: ");
-			id = user.nextLine().trim();
 			if (id.equalsIgnoreCase("x")) {
 				System.out.print("Programe Teminated!! ");
 				System.exit(0); //maha alasmy 1235eAdccvfff
@@ -89,43 +97,48 @@ catch(Exception e) {
  
 
  public static int signUp(User[] users,int count){
+	 
  if(count==users.length){
  System.out.print("Can't sign up, user limit reached!!");
  return -1;}
  String name, email, pass;
 		System.out.println("Welcome to Book with us System, please create account to proceed..");
 		System.out.println("Enter your information below to sign up!");
-		System.out.print("Name: ");
-		name = user.nextLine().trim();
-		System.out.print("Email: ");
-		email = user.next();
-		int emailvalid=email.indexOf('@');
-		while(emailvalid==-1) {
-			System.out.println("Email must have an address '@'!");
-			System.out.println("Enter your Email: ");
-			email = user.next();
-			user.nextLine();
-			emailvalid=email.indexOf('@');
-		}
-			
-		System.out.print("Password: ");
-		pass = user.next();
-		user.nextLine();
-		int passwordLength=pass.length();
-		boolean isPasswordValid= passwordValid(pass);
+		    while(true) { 
+		        try {
+		            System.out.print("Name: ");
+		            name = user.nextLine().trim();
 
-		while(passwordLength<8||!isPasswordValid) {
-			System.out.println("\n invalid Password.\nPassword must be at least 8 characters>>\nPassword must contain a capital letter>>\nTry again!");
-			System.out.println("Enter your Password: ");
-			pass = user.next();
-			user.nextLine();
-			passwordLength=pass.length();
-			isPasswordValid= passwordValid(pass);
+		            System.out.print("Email: ");
+		            email = user.next();
+
+		            if(!email.contains("@")) {
+		                throw new IllegalArgumentException("Invalid email format!");
+		            }
+
+		            System.out.print("Password: ");
+		            pass = user.next();
+
+		            if(pass.length() < 8 || !passwordValid(pass)) {
+		                throw new WeakPasswordException(
+		                    "Password must be at least 8 chars and contain uppercase letter"
+		                );
+		            }
+		            users[count++] = new User(name, email, pass, 3);
+		            saveUsers(users, count);
+
+		            System.out.println("Account created successfully!");
+		            break; 
+
+		        } catch (WeakPasswordException e) {
+		            System.out.println(e.getMessage());
+		        } catch (IllegalArgumentException e) {
+		            System.out.println(e.getMessage());
+		        } 
+		        }
+
+		    return count;
 		}
-		users[count++]=new User(name, email, pass, 3);
-		saveUsers(users,count);
-		return count;
- }
  
 	public static boolean passwordValid(String pass) {
 		char c;
