@@ -1,4 +1,4 @@
-
+package model;
 public class Flight extends Service {
 
 	// declaring variables

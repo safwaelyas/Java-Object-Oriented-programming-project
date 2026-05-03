@@ -1,3 +1,4 @@
+package ui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -52,7 +53,7 @@ public class CarRintalFrame extends JFrame {
 		
 		JButton btnBack = new JButton("<- Back ");
 		btnBack.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnBack.setBounds(10, 231, 79, 23);
+		btnBack.setBounds(10, 231, 96, 23);
 		contentPane.add(btnBack);
 		
 		JButton btnNext = new JButton("Next ->");
@@ -86,11 +87,11 @@ public class CarRintalFrame extends JFrame {
 		JLabel lblNewLabel_1_1_1 = new JLabel("How many Days to rent the car?");
 		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_1_1_1.setBounds(10, 151, 418, 21);
+		lblNewLabel_1_1_1.setBounds(-72, 162, 418, 21);
 		contentPane.add(lblNewLabel_1_1_1);
 		
 		textField = new JTextField();
-		textField.setBounds(168, 203, 96, 20);
+		textField.setBounds(262, 164, 96, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 

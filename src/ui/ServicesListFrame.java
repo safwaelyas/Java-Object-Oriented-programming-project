@@ -1,40 +1,43 @@
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
+package ui;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import model.User;
 
 public class ServicesListFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private User currentUser;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ServicesListFrame frame = new ServicesListFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ServicesListFrame frame = new ServicesListFrame();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+//
 	/**
-	 * Create the frame.
+ * Create the frame.
 	 */
-	public ServicesListFrame() {
+	
+	public ServicesListFrame(User u) {
+		currentUser=u;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 302);
 		contentPane = new JPanel();
@@ -42,13 +45,17 @@ public class ServicesListFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnBack = new JButton("<- Back ");
+		JButton btnBack = new JButton("<< Back ");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				BookingOptionsFrame frame_bO=new BookingOptionsFrame(currentUser);
+				frame_bO.setVisible(true);
+				dispose(); //remove this frame.
 			}
 		});
+		
 		btnBack.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnBack.setBounds(26, 228, 79, 23);
+		btnBack.setBounds(26, 228, 108, 23);
 		contentPane.add(btnBack);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("choose services to add to your booking:");

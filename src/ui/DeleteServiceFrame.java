@@ -1,3 +1,4 @@
+package ui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,8 +9,10 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class ConfirmBookingFrame extends JFrame {
+public class DeleteServiceFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -21,7 +24,7 @@ public class ConfirmBookingFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConfirmBookingFrame frame = new ConfirmBookingFrame();
+					DeleteServiceFrame frame = new DeleteServiceFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,9 +36,9 @@ public class ConfirmBookingFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ConfirmBookingFrame() {
+	public DeleteServiceFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 288);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -47,12 +50,12 @@ public class ConfirmBookingFrame extends JFrame {
 		contentPane_1.setBounds(0, 11, 438, 239);
 		contentPane.add(contentPane_1);
 		
-		JLabel lblConfirmbookingService = new JLabel("Confirm Booking Service");
-		lblConfirmbookingService.setFont(new Font("Times New Roman", Font.BOLD, 17));
-		lblConfirmbookingService.setBounds(10, 11, 294, 21);
-		contentPane_1.add(lblConfirmbookingService);
+		JLabel lblDeleteService = new JLabel("Delete Service");
+		lblDeleteService.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		lblDeleteService.setBounds(10, 11, 294, 21);
+		contentPane_1.add(lblDeleteService);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Which booking you want to confirm? (1-2-3):");
+		JLabel lblNewLabel_1_1 = new JLabel("Which service do you want to delete? (1-2-3):");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		lblNewLabel_1_1.setBounds(10, 65, 418, 21);
@@ -77,14 +80,17 @@ public class ConfirmBookingFrame extends JFrame {
 		contentPane_1.add(rdbtnNewRadioButton_2);
 		
 		JButton btnNext = new JButton("Next ->");
-		btnNext.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnNext.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNext.setBounds(349, 204, 79, 23);
+		btnNext.setBounds(328, 204, 100, 23);
 		contentPane_1.add(btnNext);
 		
 		JButton btnBack = new JButton("<- Back ");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnBack.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnBack.setBounds(10, 204, 79, 23);
+		btnBack.setBounds(10, 204, 100, 23);
 		contentPane_1.add(btnBack);
 
 	}

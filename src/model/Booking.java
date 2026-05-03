@@ -1,5 +1,8 @@
+package model;
 import java.io.Serializable;
 import java.time.LocalDate;
+
+import core.payable;
 public class Booking implements payable, Serializable {
 	//declaring variables
 	private final double CarTax=500;//Tax added in case of choosing a car rental service.

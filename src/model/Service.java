@@ -1,4 +1,7 @@
+package model;
 import java.io.Serializable;
+
+import core.payable;
 
 public abstract class Service implements payable, Serializable {
 	

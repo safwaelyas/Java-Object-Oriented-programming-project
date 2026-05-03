@@ -1,38 +1,41 @@
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
+package ui;
 import java.awt.Font;
-import javax.swing.SwingConstants;
+
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import model.User;
 
 public class ModifyBookingFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private User currentUser;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ModifyBookingFrame frame = new ModifyBookingFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ModifyBookingFrame frame = new ModifyBookingFrame();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public ModifyBookingFrame() {
+	public ModifyBookingFrame(User u) {
+		currentUser=u;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -54,22 +57,22 @@ public class ModifyBookingFrame extends JFrame {
 		
 		JButton btnDeleteBooking = new JButton("Delete booking ");
 		btnDeleteBooking.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 11));
-		btnDeleteBooking.setBounds(28, 152, 119, 23);
+		btnDeleteBooking.setBounds(27, 133, 119, 23);
 		contentPane_1.add(btnDeleteBooking);
 		
 		JButton btnAddService = new JButton("Add service");
 		btnAddService.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
-		btnAddService.setBounds(157, 152, 119, 23);
+		btnAddService.setBounds(157, 133, 119, 23);
 		contentPane_1.add(btnAddService);
 		
 		JButton btnDeleteService = new JButton("Delete service");
 		btnDeleteService.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 11));
-		btnDeleteService.setBounds(286, 152, 119, 23);
+		btnDeleteService.setBounds(286, 133, 119, 23);
 		contentPane_1.add(btnDeleteService);
 		
 		JButton btnBack = new JButton("<- Back ");
 		btnBack.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnBack.setBounds(10, 231, 79, 23);
+		btnBack.setBounds(10, 231, 95, 23);
 		contentPane_1.add(btnBack);
 		
 		JLabel lblModifyBookingService = new JLabel("Modify Booking Service");
