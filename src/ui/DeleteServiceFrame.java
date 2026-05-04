@@ -1,6 +1,5 @@
 package ui;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -115,7 +114,8 @@ public class DeleteServiceFrame extends JFrame {
 					serviceId = 2;
 				else
 					serviceId = 3;
-				if(currentUser.findBooking(n).DeleteService(serviceId)) {
+				ServiceDeleted=currentUser.findBooking(BookingNumber).DeleteService(serviceId);
+				if(ServiceDeleted) {
 					JOptionPane.showMessageDialog(DeleteServiceFrame.this, "Service deleted successfully!");	
 					BookingOptionsFrame frame_bO=new BookingOptionsFrame(currentUser);
 					frame_bO.setVisible(true);

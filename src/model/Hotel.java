@@ -13,8 +13,8 @@ public class Hotel extends Service {
 
 	public Hotel(char roomType, int nights) {// a constructor that receive the room type and the number of nights
 		super("Hotel");
-		this.roomType = roomType;
-		this.nights = nights;
+	   this.roomType = roomType;
+	 this.nights = nights;
 	}
 
 	public double calculateCost() {// a method that will calculate the cost depending on the room type if it’s

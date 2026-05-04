@@ -45,7 +45,9 @@ public class Booking implements payable, Serializable {
 				updateTotalPrice();
 			return true;
 			}
-			return false;	
+			else {
+			throw new RuntimeException("Booking limit reached");
+			}
 		}
 	
 		//Abstract Method

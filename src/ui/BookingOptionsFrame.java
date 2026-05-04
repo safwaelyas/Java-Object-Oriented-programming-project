@@ -1,6 +1,5 @@
 package ui;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,18 +20,18 @@ public class BookingOptionsFrame extends JFrame {
 	private User currentUser;
 	
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BookingOptionsFrame frame = new BookingOptionsFrame(new User(".",",",",",3));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					BookingOptionsFrame frame = new BookingOptionsFrame(new User(".",",",",",3));
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	
 	/**
@@ -99,11 +98,12 @@ public class BookingOptionsFrame extends JFrame {
 		btnShowBookingHistory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(currentUser.getNob()==0) {
-					lblNewLabel.setText("No Bookings Found!!,make a booking first");
-			}
+					lblNewLabel.setText("No Bookings Found!!,make a booking first");}
 				else {
-					//show Results Frame should be made.
-				}
+				ShowBookingHistory newframe=new ShowBookingHistory(currentUser);
+				newframe.setVisible(true);
+				dispose();}
+				
 			}
 		});
 		

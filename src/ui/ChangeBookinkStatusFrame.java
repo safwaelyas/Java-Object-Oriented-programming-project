@@ -1,5 +1,4 @@
 package ui;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,18 +25,18 @@ public class ChangeBookinkStatusFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ChangeBookinkStatusFrame frame = new ChangeBookinkStatusFrame(new User("ala","maha","email",3));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ChangeBookinkStatusFrame frame = new ChangeBookinkStatusFrame(new User("ala","maha","email",3));
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -106,18 +105,18 @@ public class ChangeBookinkStatusFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
                   boolean value=false;
-			if(group.getSelection()==null) {
-				lblNewLabel.setText("need to select an option first..."); 
-			}
-			else if(group.getSelection()==rdbtnNewRadioButton) {
-				value =BookWithUs.CancelBooking(1,currentUser);
-			}
-			else if(group.getSelection()==rdbtnNewRadioButton_1) {
-				value =BookWithUs.CancelBooking(2,currentUser);
-			}
-			else {
-				value =BookWithUs.CancelBooking(3,currentUser);
-			}
+                  if(group.getSelection() == null) {
+                	    lblNewLabel.setText("need to select an option first...");
+                	}
+                	else if(rdbtnNewRadioButton.isSelected()) {
+                	    value = BookWithUs.CancelBooking(1, currentUser);
+                	}
+                	else if(rdbtnNewRadioButton_1.isSelected()) {
+                	    value = BookWithUs.CancelBooking(2, currentUser);
+                	}
+                	else if(rdbtnNewRadioButton_2.isSelected()) {
+                	    value = BookWithUs.CancelBooking(3, currentUser);
+                	}
 			if(value) {
 				JOptionPane.showMessageDialog(ChangeBookinkStatusFrame.this, "Booking cancelled successfully!");	
 				BookingOptionsFrame frame_bO=new BookingOptionsFrame(currentUser);
@@ -138,17 +137,17 @@ public class ChangeBookinkStatusFrame extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean value=false;
-				if(group.getSelection()==null) {
-					lblNewLabel.setText("need to select an option first..."); 
+				if(group.getSelection() == null) {
+				    lblNewLabel.setText("need to select an option first...");
 				}
-				else if(group.getSelection()==rdbtnNewRadioButton) {
-					value =BookWithUs.ConfirmBooking(1,currentUser);
+				else if(rdbtnNewRadioButton.isSelected()) {
+				    value = BookWithUs.ConfirmBooking(1, currentUser);
 				}
-				else if(group.getSelection()==rdbtnNewRadioButton_1) {
-					value =BookWithUs.ConfirmBooking(2,currentUser);
+				else if(rdbtnNewRadioButton_1.isSelected()) {
+				    value = BookWithUs.ConfirmBooking(2, currentUser);
 				}
-				else {
-					value =BookWithUs.ConfirmBooking(3,currentUser);
+				else if(rdbtnNewRadioButton_2.isSelected()) {
+				    value = BookWithUs.ConfirmBooking(3, currentUser);
 				}
 				if(value) {
 					JOptionPane.showMessageDialog(ChangeBookinkStatusFrame.this, "Booking Confirmed successfully!");	
@@ -170,17 +169,17 @@ public class ChangeBookinkStatusFrame extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean value=false;
-				if(group.getSelection()==null) {
-					lblNewLabel.setText("need to select an option first..."); 
+				if(group.getSelection() == null) {
+				    lblNewLabel.setText("need to select an option first...");
 				}
-				else if(group.getSelection()==rdbtnNewRadioButton) {
-					value =BookWithUs.DeleteBooking(1,currentUser);
+				else if(rdbtnNewRadioButton.isSelected()) {
+				    value = BookWithUs.DeleteBooking(1, currentUser);
 				}
-				else if(group.getSelection()==rdbtnNewRadioButton_1) {
-					value =BookWithUs.DeleteBooking(2,currentUser);
+				else if(rdbtnNewRadioButton_1.isSelected()) {
+				    value = BookWithUs.DeleteBooking(2, currentUser);
 				}
-				else {
-					value =BookWithUs.DeleteBooking(3,currentUser);
+				else if(rdbtnNewRadioButton_2.isSelected()) {
+				    value = BookWithUs.DeleteBooking(3, currentUser);
 				}
 				if(value) {
 					JOptionPane.showMessageDialog(ChangeBookinkStatusFrame.this, "Booking Deleted successfully!");	
