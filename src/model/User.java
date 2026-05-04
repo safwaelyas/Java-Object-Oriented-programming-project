@@ -29,7 +29,6 @@ public class User implements Serializable {
 	// personal booking system account.
 	public boolean login(String password) {
 		 if (!this.password.equals(password)) {
-			System.out.println("Login failed, Password is incorrect!,Try again!");
 			return false;
 		}
 

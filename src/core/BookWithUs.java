@@ -44,6 +44,7 @@ public class BookWithUs {
     }
 }   
 	
+	
  public static int loadUsers(User[] users){
 int count=0;
 try{
@@ -135,8 +136,16 @@ catch(Exception e) {
 		return false;
 		}
 		}
-	
-	
+	public static boolean DeleteBooking(int n,User u){
+		boolean bookingDeleted=u.deleteBooking(n);
+		if(bookingDeleted) {
+			saveUsers();
+			return true;
+		}
+		else {
+		return false;
+		}
+		}
 	
 	
 	public static Booking AddServices(Booking n) {
@@ -225,7 +234,7 @@ catch(Exception e) {
 	
 	
 	public static void main(String[] args)throws IOException {
-		clearUsersFile();
+		//clearUsersFile();
 		//User[] users=new User[100];
 		//int count=loadUsers(users);
 		//User currentUser=null;
@@ -234,124 +243,98 @@ catch(Exception e) {
 		frame1.setVisible(true);
 		
 		
-//		int choice;
-//
-//		do {
-//			System.out.println("What would you like to do>>?");
-//			System.out.print("-------------------------\n");
-//			System.out.println("1-Make booking");
-//			System.out.println("2-Cancel booking");
-//			System.out.println("3-Confirm booking");
-//			System.out.println("4-Modify booking");
-//			System.out.println("5-Show booking history");
-//			System.out.println("6-Log out!");
-//			System.out.println("-------------");
-//			System.out.print("Enter your choice: ");
-//			choice = user.nextInt();
-//			switch (choice) {
-//			case 1:
-//				Booking b = new Booking();
-//				AddServices(b);
-//				if (b.getNumberOfServices() > 0) {
-//					currentUser.makeBooking(b);
-//					saveUsers(users,count);
-//					System.out.print("\n=====================================\n");
-//					System.out.print(b.toString());
-//					
-//				}
-//				break;
-//
-//			// cancel booking option :
-//			case 2:
-//				
-//			// confirm a booking(by default booking is not confirmed).
-//			case 3:
-//				
-//			case 4:
-//				if (currentUser.getNob() == 0) {
-//					System.out.println("\nNo Bookings Available!!");
-//					System.out.println();
-//					break;
-//				}
-//
-//				System.out.println("What you would like to do? ");
-//				System.out.print("-------------------------\n");
-//				System.out.println("1-delete booking ");
-//				System.out.println("2-Add service ");
-//				System.out.println("3-delete service ");
-//				int option = user.nextInt();
-//				switch (option) {
-//				case 1:
-//					System.out.println("Which booking you want to delete? (1-2-3): ");
-//					int dBook = user.nextInt();
-//					boolean bookingDeleted=currentUser.deleteBooking(dBook);
-//					if(bookingDeleted) {
-//						System.out.print("Booking deleted");
-//						saveUsers(users,count);
-//						System.out.print("\n=====================================\n");}
-//					else {
-//						System.out.print("Booking not found!!");
-//						System.out.print("\n=====================================\n");}
-//
-//					break;
-//				case 2:
-//					System.out.println("Which booking you want to Add a service To? (1-2-3): ");
-//					int aService = user.nextInt();
-//					Booking v = currentUser.findBooking(aService);
-//					if (v != null){
-//						AddServices(v);
-//						saveUsers(users,count);}
-//					else {
-//						System.out.print("Booking not found!! ");
-//						System.out.print("\n=====================================\n");}
-//					break;
-//				case 3:
-//					System.out.println("Which booking you want to delete a service from? (1-2-3): ");
-//					int dService = user.nextInt();
-//					Booking r = currentUser.findBooking(dService);
-//					if(r==null) {
-//						System.out.print("Booking not found!!");
-//						System.out.print("\n=====================================\n");
-//						break;}
-//					System.out.println("Which service you want to delete? (1-2-3): ");
-//					int serviceId = user.nextInt();
-//					boolean ServiceDeleted=r.DeleteService(serviceId);
-//					if(ServiceDeleted) {
-//						System.out.print("Service deleted");
-//						saveUsers(users,count);
-//						System.out.print("\n=====================================\n");}
-//					else {
-//						System.out.print("Service not found!");
-//						System.out.print("\n=====================================\n");}
-//					break;
-//				default:
-//					System.out.println("invalid selection!!");
-//					break;
-//				}
-//				break;
-//
-//			case 5:
-//				if (currentUser.getNob() == 0) {
-//					System.out.println("No bookings found!!");
-//					System.out.println();
-//					break;
-//				}
-//
-//				Booking[] array = currentUser.getBookList();
-//				for (int i = 0; i < currentUser.getNob(); i++) {
-//					System.out.println(array[i].toString());
-//				}
-//
-//				break;
-//			case 6:
-//				currentUser.logout();
-//				return;
-//			default:
-//				System.out.println("Invalid entry!! ");
-//				break;
-//			}
-//
-//		} while (choice >= 1 && choice < 6);
+		int choice;
+
+		do {
+			System.out.println("What would you like to do>>?");
+			System.out.print("-------------------------\n");
+			System.out.println("1-Make booking");
+			System.out.println("2-Cancel booking");
+			System.out.println("3-Confirm booking");
+			System.out.println("4-Modify booking");
+			System.out.println("5-Show booking history");
+			System.out.println("6-Log out!");
+			System.out.println("-------------");
+			System.out.print("Enter your choice: ");
+			choice = user.nextInt();
+			switch (choice) {
+			case 1:
+				Booking b = new Booking();
+				AddServices(b);
+				if (b.getNumberOfServices() > 0) {
+					currentUser.makeBooking(b);
+					saveUsers(users,count);
+					System.out.print("\n=====================================\n");
+					System.out.print(b.toString());
+					
+				}
+				break;
+
+			// cancel booking option :
+			case 2:
+				
+			// confirm a booking(by default booking is not confirmed).
+			case 3:
+				
+			case 4:
+				if (currentUser.getNob() == 0) {
+					System.out.println("\nNo Bookings Available!!");
+					System.out.println();
+					break;
+				}
+
+				System.out.println("What you would like to do? ");
+				System.out.print("-------------------------\n");
+				System.out.println("1-delete booking ");
+				System.out.println("2-Add service ");
+				System.out.println("3-delete service ");
+				int option = user.nextInt();
+				switch (option) {
+				//delete booking
+				case 1:
+					//add service
+				case 2:
+					System.out.println("Which booking you want to Add a service To? (1-2-3): ");
+					int aService = user.nextInt();
+					Booking v = currentUser.findBooking(aService);
+					if (v != null){
+						AddServices(v);
+						saveUsers(users,count);}
+					else {
+						System.out.print("Booking not found!! ");
+						System.out.print("\n=====================================\n");}
+					break;
+					//delete service
+				case 3:
+					
+				default:
+					System.out.println("invalid selection!!");
+					break;
+				}
+				break;
+
+			case 5:
+				if (currentUser.getNob() == 0) {
+					System.out.println("No bookings found!!");
+					System.out.println();
+					break;
+				}
+
+				Booking[] array = currentUser.getBookList();
+				for (int i = 0; i < currentUser.getNob(); i++) {
+					System.out.println(array[i].toString());
+				}
+
+				break;
+			case 6:
+				currentUser.logout();
+				return;
+			default:
+				System.out.println("Invalid entry!! ");
+				break;
+			}
+
+		} while (choice >= 1 && choice < 6);
 
 	}
 

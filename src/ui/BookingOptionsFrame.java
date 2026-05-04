@@ -19,20 +19,22 @@ public class BookingOptionsFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private User currentUser;
+	
 
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					BookingOptionsFrame frame = new BookingOptionsFrame();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					BookingOptionsFrame frame = new BookingOptionsFrame(new User(".",",",",",3));
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
+	
 	/**
 	 * Create the frame.
 	 */
@@ -47,29 +49,15 @@ public class BookingOptionsFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(45, 188, 348, 14);
+		lblNewLabel.setBounds(39, 227, 348, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("What would you like to do?");
+		lblNewLabel_1_1.setForeground(Color.DARK_GRAY);
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		lblNewLabel_1_1.setBounds(10, 43, 418, 21);
 		contentPane.add(lblNewLabel_1_1);
-		
-		JButton btnMakeBooking = new JButton("Make booking");
-		btnMakeBooking.setBackground(new Color(255, 128, 128));
-		btnMakeBooking.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ServicesListFrame ServiceFrame=new ServicesListFrame(currentUser);
-				ServiceFrame.setVisible(true);
-				dispose(); //remove this frame.
-			}
-		});
-		
-		
-		btnMakeBooking.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		btnMakeBooking.setBounds(20, 89, 161, 23);
-		contentPane.add(btnMakeBooking);
 		
 		JButton btnModifyBooking = new JButton("Modify booking");
 		btnModifyBooking.addActionListener(new ActionListener() {
@@ -85,17 +73,17 @@ public class BookingOptionsFrame extends JFrame {
 		
 		btnModifyBooking.setBackground(Color.PINK);
 		btnModifyBooking.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		btnModifyBooking.setBounds(20, 120, 161, 23);
+		btnModifyBooking.setBounds(226, 89, 161, 23);
 		contentPane.add(btnModifyBooking);
 		
-		JButton btnCancelBooking = new JButton("Cancel booking");
+		JButton btnCancelBooking = new JButton("Cancel/Confirm/Delete booking");
 		btnCancelBooking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(currentUser.getNob()==0) {
 					lblNewLabel.setText("No Bookings Found!!,make a booking first");
 			}
 				else {
-					CancelBookinkFrame frame_c=new CancelBookinkFrame(currentUser);
+					ChangeBookinkStatusFrame frame_c=new ChangeBookinkStatusFrame(currentUser);
 					frame_c.setVisible(true);
 					dispose(); }//remove this frame.
 			
@@ -104,27 +92,8 @@ public class BookingOptionsFrame extends JFrame {
 		
 		btnCancelBooking.setBackground(Color.PINK);
 		btnCancelBooking.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		btnCancelBooking.setBounds(243, 89, 161, 23);
+		btnCancelBooking.setBounds(107, 123, 211, 23);
 		contentPane.add(btnCancelBooking);
-		
-		JButton btnConfirmBooking = new JButton("Confirm booking");
-		btnConfirmBooking.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				if(currentUser.getNob()==0) {
-					lblNewLabel.setText("No Bookings Found!!,make a booking first");
-			}
-				else {
-					ConfirmBookingFrame frame_cf=new ConfirmBookingFrame(currentUser);
-					frame_cf.setVisible(true);
-					dispose(); 
-					}//remove this frame.
-			}
-			});
-		
-		btnConfirmBooking.setBackground(Color.PINK);
-		btnConfirmBooking.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		btnConfirmBooking.setBounds(243, 120, 161, 23);
-		contentPane.add(btnConfirmBooking);
 		
 		JButton btnShowBookingHistory = new JButton("Show Booking history");
 		btnShowBookingHistory.addActionListener(new ActionListener() {
@@ -140,7 +109,7 @@ public class BookingOptionsFrame extends JFrame {
 		
 		btnShowBookingHistory.setBackground(Color.PINK);
 		btnShowBookingHistory.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		btnShowBookingHistory.setBounds(20, 154, 161, 23);
+		btnShowBookingHistory.setBounds(107, 157, 211, 23);
 		contentPane.add(btnShowBookingHistory);
 		
 		JButton btnLogOut = new JButton("Log out!");
@@ -154,10 +123,22 @@ public class BookingOptionsFrame extends JFrame {
 		btnLogOut.setForeground(Color.RED);
 		btnLogOut.setBackground(Color.PINK);
 		btnLogOut.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		btnLogOut.setBounds(243, 154, 161, 23);
+		btnLogOut.setBounds(128, 188, 161, 23);
 		contentPane.add(btnLogOut);
 		
-		
+		JButton btnNewButton = new JButton("Make Booking");
+		btnNewButton.setBackground(Color.PINK);
+		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		btnNewButton.setFocusPainted(false);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ServicesListFrame ServiceFrame=new ServicesListFrame(currentUser);
+				ServiceFrame.setVisible(true);
+				dispose(); //remove this frame.
+			}
+		});
+		btnNewButton.setBounds(52, 89, 148, 23);
+		contentPane.add(btnNewButton);	
 
 	}
 

@@ -1,16 +1,19 @@
 package ui;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import model.User;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class ModifyBookingFrame extends JFrame {
 
@@ -51,46 +54,81 @@ public class ModifyBookingFrame extends JFrame {
 		contentPane_1.setBounds(0, 0, 438, 265);
 		contentPane.add(contentPane_1);
 		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("1");
+		rdbtnNewRadioButton.setBounds(28, 95, 110, 22);
+		contentPane_1.add(rdbtnNewRadioButton);
+		
+		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("2");
+		rdbtnNewRadioButton_1.setBounds(153, 95, 110, 22);
+		contentPane_1.add(rdbtnNewRadioButton_1);
+		
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("3");
+		rdbtnNewRadioButton_2.setBounds(265, 94, 110, 22);
+		contentPane_1.add(rdbtnNewRadioButton_2);
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rdbtnNewRadioButton);
+		group.add(rdbtnNewRadioButton_1);
+		group.add(rdbtnNewRadioButton_2);
+		
 		JLabel lblNewLabel_1_1 = new JLabel("What would you like to do?");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBounds(-95, 84, 418, 21);
+		lblNewLabel_1_1.setBounds(-97, 46, 418, 21);
 		contentPane_1.add(lblNewLabel_1_1);
-		
-		JButton btnDeleteBooking = new JButton("Delete booking ");
-		btnDeleteBooking.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DeleteBookingFrame frame_dB=new DeleteBookingFrame();
-				frame_dB.setVisible(true);
-				dispose();
-			}
-		});
-		btnDeleteBooking.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 11));
-		btnDeleteBooking.setBounds(27, 133, 119, 23);
-		contentPane_1.add(btnDeleteBooking);
 		
 		JButton btnAddService = new JButton("Add service");
 		btnAddService.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ServicesListFrame ServiceFrame=new ServicesListFrame(currentUser);
-				ServiceFrame.setVisible(true);
-				dispose(); //remove this frame.
+				int n=0;
+				if(group.getSelection()==null) {
+					JOptionPane.showMessageDialog(ModifyBookingFrame.this, "You need to select a booking to modify first...");
+				}
+				else { if(group.getSelection()==rdbtnNewRadioButton)
+					n=1;
+				else if(group.getSelection()==rdbtnNewRadioButton_1)
+					n=2;
+				else n=3;
+				
+				if(currentUser.findBooking(3)==null) 
+					JOptionPane.showMessageDialog(ModifyBookingFrame.this, "Booking with this number not found");
+				else {
+					ServicesListFrame ServiceFrame=new ServicesListFrame(currentUser,n);
+					ServiceFrame.setVisible(true);
+					dispose();}//remove this frame.
+				}
+
 			}
 		});
 		btnAddService.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 11));
-		btnAddService.setBounds(157, 133, 119, 23);
+		btnAddService.setBounds(48, 148, 119, 23);
 		contentPane_1.add(btnAddService);
 		
 		JButton btnDeleteService = new JButton("Delete service");
 		btnDeleteService.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DeleteServiceFrame frame_dS=new DeleteServiceFrame();
+				int n=0;
+				if(group.getSelection()==null) {
+					JOptionPane.showMessageDialog(ModifyBookingFrame.this, "You need to select a booking to modify first...");
+				}
+				else { if(group.getSelection()==rdbtnNewRadioButton)
+					n=1;
+				else if(group.getSelection()==rdbtnNewRadioButton_1)
+					n=2;
+				else n=3;
+				
+				if(currentUser.findBooking(3)==null) 
+					JOptionPane.showMessageDialog(ModifyBookingFrame.this, "Booking with this number not found");
+				else {
+				DeleteServiceFrame frame_dS=new DeleteServiceFrame(currentUser,n);
 				frame_dS.setVisible(true);
-				dispose();
+				dispose();}
+				}
+				   
 			}
 		});
 		btnDeleteService.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 11));
-		btnDeleteService.setBounds(286, 133, 119, 23);
+		btnDeleteService.setBounds(256, 148, 119, 23);
 		contentPane_1.add(btnDeleteService);
 		
 		JButton btnBack = new JButton("<< Back ");
@@ -109,7 +147,13 @@ public class ModifyBookingFrame extends JFrame {
 		lblModifyBookingService.setFont(new Font("Times New Roman", Font.BOLD, 17));
 		lblModifyBookingService.setBounds(10, 11, 294, 21);
 		contentPane_1.add(lblModifyBookingService);
-
+		
+		JLabel lblNewLabel = new JLabel("Choose a booking to modify(1,2,3)");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel.setBounds(31, 74, 232, 14);
+		contentPane_1.add(lblNewLabel);
+		
+	
 	}
 
 }

@@ -1,7 +1,6 @@
 package ui;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,12 +35,12 @@ public class CreateAcauntFrame extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Entar your name:");
 		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
-		lblNewLabel.setBounds(74, 107, 97, 14);
+		lblNewLabel.setBounds(32, 91, 97, 14);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblEntarEmail = new JLabel("Entar email:");
 		lblEntarEmail.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
-		lblEntarEmail.setBounds(74, 136, 97, 14);
+		lblEntarEmail.setBounds(32, 120, 97, 14);
 		getContentPane().add(lblEntarEmail);
 		
 		JLabel lblWelcomToBooking = new JLabel("Welcome To Book with us System...");
@@ -54,21 +53,21 @@ public class CreateAcauntFrame extends JFrame {
 		
 		JLabel lblEntarPassword = new JLabel("Entar password:");
 		lblEntarPassword.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
-		lblEntarPassword.setBounds(74, 167, 97, 14);
+		lblEntarPassword.setBounds(32, 150, 97, 14);
 		getContentPane().add(lblEntarPassword);
 		
 		textFieldName = new JTextField();
-		textFieldName.setBounds(254, 105, 138, 20);
+		textFieldName.setBounds(199, 89, 138, 20);
 		getContentPane().add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		textField_email = new JTextField();
-		textField_email.setBounds(254, 134, 138, 20);
+		textField_email.setBounds(199, 118, 138, 20);
 		getContentPane().add(textField_email);
 		textField_email.setColumns(10);
 		
 		textField_pass = new JTextField();
-		textField_pass.setBounds(254, 165, 138, 20);
+		textField_pass.setBounds(199, 148, 138, 20);
 		getContentPane().add(textField_pass);
 		textField_pass.setColumns(10);
 
