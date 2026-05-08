@@ -257,18 +257,18 @@ public class ServicesListFrame extends JFrame {
 						f=new Flight(flightdate,flightclass.charAt(0));
 						b.addService(f);}
 					}
-				if(hotel&&car&&flight) {
-					boolean made= BookWithUs.makeBookUser(currentUser,b);
-					if(made) {
-						JOptionPane.showMessageDialog(ServicesListFrame.this, "Booking made successfully!");	
-						BookingOptionsFrame frame_bO=new BookingOptionsFrame(currentUser);
-						frame_bO.setVisible(true);
-						dispose(); //remove this frame.
-					}
-					else {
-					JOptionPane.showMessageDialog(ServicesListFrame.this, "You must select at least one service..");}	
+			}
+			if(hotel&&car&&flight) {
+				boolean made= BookWithUs.makeBookUser(currentUser,b);
+				if(made) {
+					JOptionPane.showMessageDialog(ServicesListFrame.this, "Booking made successfully!");	
+					BookingOptionsFrame frame_bO=new BookingOptionsFrame(currentUser);
+					frame_bO.setVisible(true);
+					dispose(); //remove this frame.
 				}
-			}	
+				else {
+				JOptionPane.showMessageDialog(ServicesListFrame.this, "You must select at least one service..");}	
+			}
 			}
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));

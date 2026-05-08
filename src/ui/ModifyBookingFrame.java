@@ -111,9 +111,9 @@ public class ModifyBookingFrame extends JFrame {
 				if(group.getSelection()==null) {
 					JOptionPane.showMessageDialog(ModifyBookingFrame.this, "You need to select a booking to modify first...");
 				}
-				else { if(group.getSelection()==rdbtnNewRadioButton)
+				else { if(rdbtnNewRadioButton.isSelected())
 					n=1;
-				else if(group.getSelection()==rdbtnNewRadioButton_1)
+				else if(rdbtnNewRadioButton_1.isSelected())
 					n=2;
 				else n=3;
 				

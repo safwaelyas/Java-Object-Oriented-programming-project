@@ -7,132 +7,136 @@ SECTION NUMBER:46412
 Lab INUSTRUCTUR: Ghada Abdullah S Alamer.
 */
 //Class with the main method implemented.
+
+
+
 package core;
 
-import static java.lang.Character.*;
+import static java.lang.Character.isUpperCase;
+
 import java.io.*;
 import java.util.Scanner;
-
-import model.*;
+import model.Booking;
+import model.User;
 import ui.SingInFrame;
 
 public class BookWithUs {
-	static Scanner user= new Scanner(System.in);
-	
-	public static User[] users=new User[100];
-	public static int count=loadUsers(users);
-	
-	
-	public static void clearUsersFile() {
-    try {
-        new FileOutputStream("users.dat").close();
-    } catch (Exception e) {
-        System.out.println("Could not clear file.");
+
+    static Scanner user = new Scanner(System.in);
+    public static SinglyLinkedList users = new SinglyLinkedList();
+
+    static {
+    	try {
+        loadUsers();
+    	}
+    	catch(IOException e) {
+    		
+    	}
     }
-}   
-	
-	
- public static int loadUsers(User[] users){
-int count=0;
-try{
-ObjectInputStream ois = new ObjectInputStream(new FileInputStream("users.dat"));
-count=ois.readInt();
-for(int i=0;i<count;i++) 
-users[i]=(User) ois.readObject();
-ois.close();
-}
-catch (FileNotFoundException e) {
-    System.out.println("File not found, starting with empty users.");
-}
-catch (IOException e) {
-    System.out.println("Error reading file.");
-    e.printStackTrace();
-}
-catch (ClassNotFoundException e) {
-    System.out.println("User class not found.");
-}
-return count;
- }
 
- 
- public static void saveUsers(){
-try{
- ObjectOutputStream oos= new ObjectOutputStream(new FileOutputStream("users.dat"));
- oos.writeInt(count);
- for(int i=0;i<count;i++) 
- oos.writeObject(users[i]);
- oos.close();
-}
+    public static void clearUsersFile() {
+        try {
+            new FileOutputStream("users.dat").close();
+        } catch (Exception e) {
+            System.out.println("Could not clear file.");
+        }
+    }
 
-catch(Exception e) {
-	System.out.println("Error saving users!!");
-}
- }
+    public static void loadUsers()throws IOException {
+    	 ObjectInputStream ois = null;
+        try {
+        	File usersFile=new File("users.dat");
+        	if(!usersFile.exists()||usersFile.length()==0)
+        		return;
+           ois = new ObjectInputStream(new FileInputStream(usersFile));
+            while(true) {
+            	User u=(User) ois.readObject();
+                users.addLast(u);
+            }
+   
+        }catch (EOFException e2) {
+            e2.printStackTrace();
+            
+            }
 
- 
- 
- public static User login(String name,String pass){
-	 User tryUser=null;
-	 for (int i = 0; i < count; i++) {
-		 tryUser= users[i];
-	        if (tryUser.getName().equals(name) && tryUser.login(pass)) {
-	            return tryUser;
-	        }
-	    }
-	    return null;
- }
- 
+       catch (ClassNotFoundException e3) {
+            System.out.println("User class not found.");
+        }
+        finally{
+        	 if (ois != null)
+                 ois.close();
+        }
+    }
 
- 
- public static int signUp(String N,String E,String P){
- if(count==users.length){
- return -1;}
- users[count++]=new User(N,E,P,3);
- saveUsers();
-  return count;
-		}
- 
- 
-	public static boolean passwordValid(String pass) {
-		char c;
-		for(int l=0;l<pass.length();l++) {
-			c=pass.charAt(l);
-			if(isUpperCase(c))
-				return true;}
-		return false;
-	}
-	
-	
-	public static boolean CancelBooking(int n,User u){
-		boolean isCancelled=u.cancelBooking(n); 
-		if(isCancelled) {
-			saveUsers();
-			return true;
-		}
-		else 
-		return false;
-		}
-	
-	public static boolean ConfirmBooking(int n,User u){
-		boolean isConfirmed=u.confirmBooking(n);
-		if(isConfirmed) {
-			saveUsers();
-			return true;
-		}
-		else {
-		return false;
-		}
-		}
-	public static boolean DeleteBooking(int n,User u){
-		boolean bookingDeleted=u.deleteBooking(n);
-		if(bookingDeleted) {
-			saveUsers();
-			return true;
-		}
-		else {
-		return false;
-		}
-		}
+    public static void saveUsers() {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("users.dat"));
+            SinglyLinkedList.UserNode current = users.getHead();
+            while (current != null) {
+                oos.writeObject(current.getData());
+                current = current.getNext();
+            }
+            oos.close();
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+    }
+
+    public static User login(String name, String pass) {
+        SinglyLinkedList.UserNode current = users.getHead();
+        while (current != null) {
+            User tryUser = current.getData();
+            if (tryUser.getName().equals(name) && tryUser.login(pass))
+                return tryUser;
+            current = current.getNext();
+        }
+        return null;
+    }
+
+    public static int signUp(String N, String E, String P) {
+        users.addLast(new User(N, E, P, 3));
+        saveUsers();
+        return users.getSize();
+    }
+
+    public static boolean passwordValid(String pass) {
+        char c;
+        for (int l = 0; l < pass.length(); l++) {
+            c = pass.charAt(l);
+            if (isUpperCase(c)) return true;
+        }
+        return false;
+    }
+
+    public static boolean CancelBooking(int n, User u) {
+        boolean isCancelled = u.cancelBooking(n);
+        if (isCancelled) {
+            saveUsers();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean ConfirmBooking(int n, User u) {
+        boolean isConfirmed = u.confirmBooking(n);
+        if (isConfirmed) {
+            saveUsers();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean DeleteBooking(int n, User u) {
+        boolean bookingDeleted = u.deleteBooking(n);
+        if (bookingDeleted) {
+            saveUsers();
+            return true;
+        } else {
+            return false;
+        }
+    }
 	
 	public static boolean makeBookUser(User u,Booking b) {
 		if(b.getNumberOfServices()>0) {
@@ -146,11 +150,7 @@ catch(Exception e) {
 	
 	//jkhgfgfhjklA25
 	public static void main(String[] args)throws IOException {
-		//clearUsersFile();
-		//User[] users=new User[100];
-		//int count=loadUsers(users);
-		//User currentUser=null;
-		
+		clearUsersFile();	
 		SingInFrame frame1 = new SingInFrame();
 		frame1.setVisible(true);
 		
