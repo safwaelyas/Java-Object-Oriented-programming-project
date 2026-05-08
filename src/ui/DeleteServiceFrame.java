@@ -1,6 +1,7 @@
 package ui;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -43,6 +44,7 @@ public class DeleteServiceFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public DeleteServiceFrame(User u,int n) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\safsa\\Downloads\\icons8-gui-64.png"));
 		currentUser=u;
 		BookingNumber=n;
 		
@@ -65,31 +67,31 @@ public class DeleteServiceFrame extends JFrame {
 		contentPane_1.add(lblNewLabel);
 		
 		JLabel lblDeleteService = new JLabel("Delete Service");
-		lblDeleteService.setFont(new Font("Times New Roman", Font.BOLD, 17));
+		lblDeleteService.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		lblDeleteService.setBounds(10, 11, 294, 21);
 		contentPane_1.add(lblDeleteService);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Which service you want to delete? (1-2-3):");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		lblNewLabel_1_1.setBounds(0, 43, 418, 21);
 		contentPane_1.add(lblNewLabel_1_1);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("1");
 		rdbtnNewRadioButton.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnNewRadioButton.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		rdbtnNewRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		rdbtnNewRadioButton.setBounds(78, 87, 69, 23);
 		contentPane_1.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("2");
 		rdbtnNewRadioButton_1.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnNewRadioButton_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		rdbtnNewRadioButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		rdbtnNewRadioButton_1.setBounds(168, 87, 69, 23);
 		contentPane_1.add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("3");
 		rdbtnNewRadioButton_2.setHorizontalAlignment(SwingConstants.CENTER);
-		rdbtnNewRadioButton_2.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		rdbtnNewRadioButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		rdbtnNewRadioButton_2.setBounds(262, 87, 69, 23);
 		contentPane_1.add(rdbtnNewRadioButton_2);
 		
@@ -129,7 +131,7 @@ public class DeleteServiceFrame extends JFrame {
 				}	
 			}
 		});
-		btnNext.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNext.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnNext.setBounds(328, 204, 100, 23);
 		contentPane_1.add(btnNext);
 		
@@ -141,7 +143,7 @@ public class DeleteServiceFrame extends JFrame {
 				dispose();
 			}
 		});
-		btnBack.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnBack.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnBack.setBounds(10, 204, 100, 23);
 		contentPane_1.add(btnBack);
 		

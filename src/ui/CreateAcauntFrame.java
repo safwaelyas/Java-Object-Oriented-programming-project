@@ -17,6 +17,7 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import core.BookWithUs;
 import core.WeakPasswordException;
+import java.awt.Toolkit;
 
 public class CreateAcauntFrame extends JFrame {
 	
@@ -25,6 +26,7 @@ public class CreateAcauntFrame extends JFrame {
 	 */
 
 	public CreateAcauntFrame() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\safsa\\Downloads\\icons8-gui-64.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -34,17 +36,17 @@ public class CreateAcauntFrame extends JFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Entar your name:");
-		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblNewLabel.setBounds(32, 91, 97, 14);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblEntarEmail = new JLabel("Entar email:");
-		lblEntarEmail.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		lblEntarEmail.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblEntarEmail.setBounds(32, 120, 97, 14);
 		getContentPane().add(lblEntarEmail);
 		
 		JLabel lblWelcomToBooking = new JLabel("Welcome To Book with us System...");
-		lblWelcomToBooking.setForeground(Color.BLUE);
+		lblWelcomToBooking.setForeground(new Color(128, 0, 128));
 		lblWelcomToBooking.setToolTipText("");
 		lblWelcomToBooking.setFont(new Font("Times New Roman", Font.BOLD, 17));
 		lblWelcomToBooking.setHorizontalAlignment(SwingConstants.CENTER);
@@ -52,7 +54,7 @@ public class CreateAcauntFrame extends JFrame {
 		getContentPane().add(lblWelcomToBooking);
 		
 		JLabel lblEntarPassword = new JLabel("Entar password:");
-		lblEntarPassword.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		lblEntarPassword.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblEntarPassword.setBounds(32, 150, 97, 14);
 		getContentPane().add(lblEntarPassword);
 		
@@ -76,7 +78,7 @@ public class CreateAcauntFrame extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton_1 = new JButton("sign up  ");
-		btnNewButton_1.setForeground(Color.BLACK);
+		btnNewButton_1.setForeground(new Color(199, 21, 133));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -89,7 +91,7 @@ public class CreateAcauntFrame extends JFrame {
 		try {
 			boolean emailValue=email.contains("@");
 			if(!emailValue) 
-                throw new IllegalArgumentException("Invalid email format, Email must have an address '@'!");
+                throw new RuntimeException("Invalid email format, Email must have an address '@'!");
         else
            	if(pass.length() < 8 || !BookWithUs.passwordValid(pass)) {
 		                throw new WeakPasswordException("\ninvalid Password.\nPassword must be at least 8 characters>>\nPassword must contain a capital letter>>\nTry again!");
@@ -111,7 +113,7 @@ public class CreateAcauntFrame extends JFrame {
 				textField_email.setText("");
 				textField_pass.setText("");
 				lblNewLabel_1.setText(e1.getMessage());
-	        } catch (IllegalArgumentException e2) {
+	        } catch (RuntimeException e2) {
 	        	    textFieldName.setText("");
 				textField_email.setText("");
 				textField_pass.setText("");
@@ -120,14 +122,14 @@ public class CreateAcauntFrame extends JFrame {
 			
 			}
 		});
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnNewButton_1.setBounds(178, 215, 88, 23);
 		getContentPane().add(btnNewButton_1);
 		
-		JLabel lblEnterYourInformations = new JLabel("Enter your informations below>>");
-		lblEnterYourInformations.setForeground(Color.BLUE);
+		JLabel lblEnterYourInformations = new JLabel("Enter your informations below >>");
+		lblEnterYourInformations.setForeground(new Color(128, 0, 128));
 		lblEnterYourInformations.setFont(new Font("Times New Roman", Font.BOLD, 17));
-		lblEnterYourInformations.setBounds(32, 33, 251, 32);
+		lblEnterYourInformations.setBounds(32, 33, 294, 32);
 		contentPane.add(lblEnterYourInformations);
 		
 

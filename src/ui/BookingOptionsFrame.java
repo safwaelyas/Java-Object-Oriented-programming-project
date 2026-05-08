@@ -52,13 +52,14 @@ public class BookingOptionsFrame extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("What would you like to do?");
-		lblNewLabel_1_1.setForeground(Color.DARK_GRAY);
+		lblNewLabel_1_1.setForeground(new Color(128, 0, 128));
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		lblNewLabel_1_1.setBounds(10, 43, 418, 21);
 		contentPane.add(lblNewLabel_1_1);
 		
 		JButton btnModifyBooking = new JButton("Modify booking");
+		btnModifyBooking.setForeground(new Color(199, 21, 133));
 		btnModifyBooking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(currentUser.getNob()==0) {
@@ -76,6 +77,7 @@ public class BookingOptionsFrame extends JFrame {
 		contentPane.add(btnModifyBooking);
 		
 		JButton btnCancelBooking = new JButton("Cancel/Confirm/Delete booking");
+		btnCancelBooking.setForeground(new Color(199, 21, 133));
 		btnCancelBooking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(currentUser.getNob()==0) {
@@ -95,6 +97,7 @@ public class BookingOptionsFrame extends JFrame {
 		contentPane.add(btnCancelBooking);
 		
 		JButton btnShowBookingHistory = new JButton("Show Booking history");
+		btnShowBookingHistory.setForeground(new Color(199, 21, 133));
 		btnShowBookingHistory.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(currentUser.getNob()==0) {
@@ -120,13 +123,14 @@ public class BookingOptionsFrame extends JFrame {
 				dispose(); //remove this frame.
 			}
 		});
-		btnLogOut.setForeground(Color.RED);
+		btnLogOut.setForeground(new Color(199, 21, 133));
 		btnLogOut.setBackground(Color.PINK);
 		btnLogOut.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnLogOut.setBounds(128, 188, 161, 23);
 		contentPane.add(btnLogOut);
 		
 		JButton btnNewButton = new JButton("Make Booking");
+		btnNewButton.setForeground(new Color(199, 21, 133));
 		btnNewButton.setBackground(Color.PINK);
 		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnNewButton.setFocusPainted(false);

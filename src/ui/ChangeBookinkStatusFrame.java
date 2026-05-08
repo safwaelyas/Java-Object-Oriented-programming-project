@@ -1,4 +1,6 @@
 package ui;
+import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,18 +27,18 @@ public class ChangeBookinkStatusFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					ChangeBookinkStatusFrame frame = new ChangeBookinkStatusFrame(new User("ala","maha","email",3));
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ChangeBookinkStatusFrame frame = new ChangeBookinkStatusFrame(new User("ala","maha","email",3));
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
@@ -56,14 +58,17 @@ public class ChangeBookinkStatusFrame extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblCancelbookingService = new JLabel("Change Booking Status Service");
-		lblCancelbookingService.setFont(new Font("Times New Roman", Font.BOLD, 17));
-		lblCancelbookingService.setBounds(10, 11, 294, 21);
+		lblCancelbookingService.setLabelFor(this);
+		lblCancelbookingService.setForeground(new Color(128, 0, 128));
+		lblCancelbookingService.setFont(new Font("Times New Roman", Font.PLAIN, 19));
+		lblCancelbookingService.setBounds(20, 11, 294, 21);
 		contentPane.add(lblCancelbookingService);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Which booking you want to modify? (1-2-3):");
+		lblNewLabel_1_1.setForeground(new Color(128, 0, 128));
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
-		lblNewLabel_1_1.setBounds(-53, 43, 418, 21);
+		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 19));
+		lblNewLabel_1_1.setBounds(20, 43, 418, 21);
 		contentPane.add(lblNewLabel_1_1);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("1");

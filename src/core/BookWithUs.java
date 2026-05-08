@@ -30,7 +30,7 @@ public class BookWithUs {
         loadUsers();
     	}
     	catch(IOException e) {
-    		
+    		  e.printStackTrace();
     	}
     }
 
@@ -77,7 +77,7 @@ public class BookWithUs {
                 current = current.getNext();
             }
             oos.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
            e.printStackTrace();
         }
     }
@@ -148,9 +148,9 @@ public class BookWithUs {
 	}
 	
 	
-	//jkhgfgfhjklA25
+
 	public static void main(String[] args)throws IOException {
-		clearUsersFile();	
+		//clearUsersFile();	
 		SingInFrame frame1 = new SingInFrame();
 		frame1.setVisible(true);
 		

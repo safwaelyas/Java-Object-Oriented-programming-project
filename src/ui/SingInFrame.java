@@ -50,12 +50,14 @@ public class SingInFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Entar your name:");
-		lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblNewLabel.setBounds(23, 80, 97, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblEntarPassword = new JLabel("Entar password:");
-		lblEntarPassword.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		lblEntarPassword.setForeground(new Color(0, 0, 0));
+		lblEntarPassword.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		lblEntarPassword.setBounds(23, 110, 97, 14);
 		contentPane.add(lblEntarPassword);
 		
@@ -70,15 +72,18 @@ public class SingInFrame extends JFrame {
 		contentPane.add(textField_1);
 		
 		JLabel lblinvalid_or_noaccountfound = new JLabel("");
-		lblinvalid_or_noaccountfound.setBounds(94, 55, 243, 14);
+		lblinvalid_or_noaccountfound.setBounds(59, 55, 332, 14);
 		contentPane.add(lblinvalid_or_noaccountfound);
 		
 		JLabel lblSignIn = new JLabel("Welcom To Book with us System, Login to your account");
-		lblSignIn.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
-		lblSignIn.setBounds(10, 11, 403, 33);
+		lblSignIn.setForeground(new Color(128, 0, 128));
+		lblSignIn.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		lblSignIn.setBounds(10, 22, 403, 33);
 		contentPane.add(lblSignIn);
 		
 		JButton btnNewButton = new JButton("Don't have account yet? sign up First");
+		btnNewButton.setForeground(new Color(199, 21, 133));
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -87,7 +92,7 @@ public class SingInFrame extends JFrame {
 				  dispose();
 			}
 		});
-		btnNewButton.setBounds(47, 212, 222, 22);
+		btnNewButton.setBounds(23, 209, 244, 22);
 		contentPane.add(btnNewButton);
 		
 		
@@ -114,8 +119,8 @@ public class SingInFrame extends JFrame {
 		    }
 		});
 		
-		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		btnNewButton_1.setForeground(Color.RED);
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		btnNewButton_1.setForeground(new Color(199, 21, 133));
 		btnNewButton_1.setBounds(169, 149, 88, 22);
 		contentPane.add(btnNewButton_1);
 

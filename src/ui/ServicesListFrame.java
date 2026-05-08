@@ -1,5 +1,6 @@
 package ui;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -54,6 +55,8 @@ public class ServicesListFrame extends JFrame {
 	 */
 	
 	public ServicesListFrame(User u) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\safsa\\Downloads\\icons8-gui-64.png"));
+
 		currentUser=u;
 		
 
@@ -288,6 +291,7 @@ public class ServicesListFrame extends JFrame {
 	 */
 	
 	public ServicesListFrame(User u,int b){
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\safsa\\Downloads\\icons8-gui-64.png"));
 		currentUser=u;
 		bb=u.findBooking(b);
 
