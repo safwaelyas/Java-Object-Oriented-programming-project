@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import core.BookWithUs;
 import model.User;
+import java.awt.Toolkit;
 
 public class SingInFrame extends JFrame {
 
@@ -42,6 +43,7 @@ public class SingInFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public SingInFrame() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\safsa\\Downloads\\icons8-gui-64.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -119,7 +121,7 @@ public class SingInFrame extends JFrame {
 		    }
 		});
 		
-		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 13));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		btnNewButton_1.setForeground(new Color(199, 21, 133));
 		btnNewButton_1.setBounds(169, 149, 88, 22);
 		contentPane.add(btnNewButton_1);

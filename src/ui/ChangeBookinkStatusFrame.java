@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 import core.BookWithUs;
 import model.User;
+import java.awt.Toolkit;
 
 public class ChangeBookinkStatusFrame extends JFrame {
 
@@ -44,6 +45,7 @@ public class ChangeBookinkStatusFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public ChangeBookinkStatusFrame(User u) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\safsa\\Downloads\\icons8-gui-64.png"));
 		currentUser=u;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,7 +69,7 @@ public class ChangeBookinkStatusFrame extends JFrame {
 		JLabel lblNewLabel_1_1 = new JLabel("Which booking you want to modify? (1-2-3):");
 		lblNewLabel_1_1.setForeground(new Color(128, 0, 128));
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 19));
+		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		lblNewLabel_1_1.setBounds(20, 43, 418, 21);
 		contentPane.add(lblNewLabel_1_1);
 		
@@ -95,6 +97,7 @@ public class ChangeBookinkStatusFrame extends JFrame {
 		group.add(rdbtnNewRadioButton_2);
 		
 		JButton btnBack = new JButton("<< Back ");
+		btnBack.setForeground(new Color(128, 0, 128));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BookingOptionsFrame frame_bO=new BookingOptionsFrame(currentUser);
@@ -102,11 +105,13 @@ public class ChangeBookinkStatusFrame extends JFrame {
 				dispose(); //remove this frame.
 			}
 		});
-		btnBack.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnBack.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnBack.setBounds(10, 204, 88, 23);
 		contentPane.add(btnBack);
 		
 		JButton btnNewButton = new JButton("Cancel");
+		btnNewButton.setForeground(new Color(255, 127, 80));
+		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
                   boolean value=false;
@@ -139,6 +144,8 @@ public class ChangeBookinkStatusFrame extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Confirm");
+		btnNewButton_1.setForeground(new Color(255, 140, 0));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean value=false;
@@ -171,6 +178,8 @@ public class ChangeBookinkStatusFrame extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Delete");
+		btnNewButton_2.setForeground(new Color(255, 140, 0));
+		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean value=false;

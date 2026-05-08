@@ -55,7 +55,7 @@ public class BookingOptionsFrame extends JFrame {
 		lblNewLabel_1_1.setForeground(new Color(128, 0, 128));
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 19));
-		lblNewLabel_1_1.setBounds(10, 43, 418, 21);
+		lblNewLabel_1_1.setBounds(10, 32, 418, 21);
 		contentPane.add(lblNewLabel_1_1);
 		
 		JButton btnModifyBooking = new JButton("Modify booking");
@@ -71,9 +71,9 @@ public class BookingOptionsFrame extends JFrame {
 				dispose(); }//remove this frame.
 			}});
 		
-		btnModifyBooking.setBackground(Color.PINK);
+		btnModifyBooking.setBackground(new Color(255, 235, 205));
 		btnModifyBooking.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		btnModifyBooking.setBounds(226, 89, 161, 23);
+		btnModifyBooking.setBounds(226, 94, 161, 23);
 		contentPane.add(btnModifyBooking);
 		
 		JButton btnCancelBooking = new JButton("Cancel/Confirm/Delete booking");
@@ -91,9 +91,9 @@ public class BookingOptionsFrame extends JFrame {
 			}
 		});
 		
-		btnCancelBooking.setBackground(Color.PINK);
+		btnCancelBooking.setBackground(new Color(255, 235, 205));
 		btnCancelBooking.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		btnCancelBooking.setBounds(107, 123, 211, 23);
+		btnCancelBooking.setBounds(107, 142, 211, 23);
 		contentPane.add(btnCancelBooking);
 		
 		JButton btnShowBookingHistory = new JButton("Show Booking history");
@@ -110,9 +110,9 @@ public class BookingOptionsFrame extends JFrame {
 			}
 		});
 		
-		btnShowBookingHistory.setBackground(Color.PINK);
+		btnShowBookingHistory.setBackground(new Color(255, 235, 205));
 		btnShowBookingHistory.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		btnShowBookingHistory.setBounds(107, 157, 211, 23);
+		btnShowBookingHistory.setBounds(107, 176, 211, 23);
 		contentPane.add(btnShowBookingHistory);
 		
 		JButton btnLogOut = new JButton("Log out!");
@@ -124,14 +124,14 @@ public class BookingOptionsFrame extends JFrame {
 			}
 		});
 		btnLogOut.setForeground(new Color(199, 21, 133));
-		btnLogOut.setBackground(Color.PINK);
+		btnLogOut.setBackground(new Color(255, 235, 205));
 		btnLogOut.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-		btnLogOut.setBounds(128, 188, 161, 23);
+		btnLogOut.setBounds(129, 210, 161, 23);
 		contentPane.add(btnLogOut);
 		
 		JButton btnNewButton = new JButton("Make Booking");
 		btnNewButton.setForeground(new Color(199, 21, 133));
-		btnNewButton.setBackground(Color.PINK);
+		btnNewButton.setBackground(new Color(255, 235, 205));
 		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnNewButton.setFocusPainted(false);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -141,7 +141,7 @@ public class BookingOptionsFrame extends JFrame {
 				dispose(); //remove this frame.
 			}
 		});
-		btnNewButton.setBounds(52, 89, 148, 23);
+		btnNewButton.setBounds(52, 94, 148, 23);
 		contentPane.add(btnNewButton);	
 
 	}

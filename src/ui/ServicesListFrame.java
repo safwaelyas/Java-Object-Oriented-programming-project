@@ -26,6 +26,7 @@ import model.Hotel;
 import model.Service;
 import model.User;
 import model.internationalFlights;
+import java.awt.Color;
 
 public class ServicesListFrame extends JFrame {
 
@@ -303,6 +304,7 @@ public class ServicesListFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnBack = new JButton("<< Back ");
+		btnBack.setForeground(new Color(128, 0, 128));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BookingOptionsFrame frame_bO=new BookingOptionsFrame(currentUser);
@@ -311,30 +313,34 @@ public class ServicesListFrame extends JFrame {
 			}
 		});
 		
-		btnBack.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnBack.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnBack.setBounds(10, 228, 108, 23);
 		contentPane.add(btnBack);
 		
-		JLabel lblMakebookingService = new JLabel("Choose Services(You can Add one at a time:");
-		lblMakebookingService.setFont(new Font("Times New Roman", Font.BOLD, 17));
-		lblMakebookingService.setBounds(10, 11, 383, 21);
+		JLabel lblMakebookingService = new JLabel("Choose Services (You can Add one at a time):");
+		lblMakebookingService.setForeground(new Color(128, 0, 128));
+		lblMakebookingService.setFont(new Font("Times New Roman", Font.PLAIN, 19));
+		lblMakebookingService.setBounds(10, 26, 383, 21);
 		contentPane.add(lblMakebookingService);
 		
 		JRadioButton HotelBox = new JRadioButton("Hotel");
+		HotelBox.setForeground(new Color(255, 127, 80));
 		HotelBox.setHorizontalAlignment(SwingConstants.CENTER);
-		HotelBox.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		HotelBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		HotelBox.setBounds(10, 63, 69, 23);
 		contentPane.add(HotelBox);
 		
 		JRadioButton carBox = new JRadioButton("Car");
+		carBox.setForeground(new Color(255, 127, 80));
 		carBox.setHorizontalAlignment(SwingConstants.CENTER);
-		carBox.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		carBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		carBox.setBounds(172, 63, 69, 23);
 		contentPane.add(carBox);
 		
 		JRadioButton flightBox = new JRadioButton("Flight");
+		flightBox.setForeground(new Color(255, 127, 80));
 		flightBox.setHorizontalAlignment(SwingConstants.CENTER);
-		flightBox.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 12));
+		flightBox.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		flightBox.setBounds(305, 63, 69, 23);
 		contentPane.add(flightBox);
 		
@@ -345,14 +351,17 @@ public class ServicesListFrame extends JFrame {
 		
 		
 		JLabel lblNewLabel = new JLabel("How many nights?");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		lblNewLabel.setBounds(10, 146, 108, 14);
 		contentPane.add(lblNewLabel);
 		
 		JRadioButton DomesticRadioButton = new JRadioButton("Domestic");
+		DomesticRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		DomesticRadioButton.setBounds(334, 85, 110, 22);
 		contentPane.add(DomesticRadioButton);
 		
 		JRadioButton internationalRadioButton = new JRadioButton("International");
+		internationalRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		internationalRadioButton.setBounds(334, 110, 102, 22);
 		contentPane.add(internationalRadioButton);
 		
@@ -362,22 +371,27 @@ public class ServicesListFrame extends JFrame {
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("Class");
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		lblNewLabel_1.setBounds(313, 130, 131, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Room Type:");
-		lblNewLabel_2.setBounds(10, 93, 88, 14);
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		lblNewLabel_2.setBounds(10, 100, 88, 21);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Car Type");
-		lblNewLabel_3.setBounds(161, 93, 98, 14);
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		lblNewLabel_3.setBounds(161, 98, 98, 23);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("How many days?");
+		lblNewLabel_4.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		lblNewLabel_4.setBounds(161, 146, 98, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Date (Day in month):");
+		lblNewLabel_5.setFont(new Font("Times New Roman", Font.PLAIN, 13));
 		lblNewLabel_5.setBounds(313, 177, 116, 14);
 		contentPane.add(lblNewLabel_5);
 		
@@ -483,6 +497,7 @@ public class ServicesListFrame extends JFrame {
 		
 		
 		JButton btnNewButton = new JButton("Confirm");
+		btnNewButton.setForeground(new Color(128, 0, 128));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String hotelroom,cartype,flightclass;
@@ -578,7 +593,7 @@ public class ServicesListFrame extends JFrame {
 			}
 		});
 			
-		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnNewButton.setBounds(161, 228, 98, 23);
 		contentPane.add(btnNewButton);
 	}	

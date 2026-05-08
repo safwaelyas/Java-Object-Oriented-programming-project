@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +13,8 @@ import javax.swing.border.EmptyBorder;
 
 import model.Booking;
 import model.User;
+import java.awt.Font;
+import java.awt.Color;
 
 public class ShowBookingHistory extends JFrame {
 
@@ -39,6 +42,7 @@ public class ShowBookingHistory extends JFrame {
 	 * Create the frame.
 	 */
 	public ShowBookingHistory(User u) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\safsa\\Downloads\\icons8-gui-64.png"));
 		currentUser=u;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 304);
@@ -48,6 +52,8 @@ public class ShowBookingHistory extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("<<Back to the main menu>>");
+		btnNewButton.setForeground(new Color(128, 0, 128));
+		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BookingOptionsFrame frame_bO=new BookingOptionsFrame(currentUser);
@@ -59,6 +65,8 @@ public class ShowBookingHistory extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		textArea.setForeground(new Color(128, 0, 0));
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		scrollPane.setBounds(10, 30, 403, 188);
 		contentPane.add(scrollPane);

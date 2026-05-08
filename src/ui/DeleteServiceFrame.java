@@ -67,11 +67,13 @@ public class DeleteServiceFrame extends JFrame {
 		contentPane_1.add(lblNewLabel);
 		
 		JLabel lblDeleteService = new JLabel("Delete Service");
+		lblDeleteService.setForeground(new Color(128, 0, 128));
 		lblDeleteService.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		lblDeleteService.setBounds(10, 11, 294, 21);
 		contentPane_1.add(lblDeleteService);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Which service you want to delete? (1-2-3):");
+		lblNewLabel_1_1.setForeground(new Color(128, 0, 128));
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		lblNewLabel_1_1.setBounds(0, 43, 418, 21);
@@ -101,6 +103,7 @@ public class DeleteServiceFrame extends JFrame {
 		group.add(rdbtnNewRadioButton_2);
 		
 		JButton btnNext = new JButton("Next >>");
+		btnNext.setForeground(new Color(128, 0, 128));
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int serviceId=0;
@@ -136,6 +139,7 @@ public class DeleteServiceFrame extends JFrame {
 		contentPane_1.add(btnNext);
 		
 		JButton btnBack = new JButton("<< Back ");
+		btnBack.setForeground(new Color(128, 0, 128));
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ModifyBookingFrame frame_mB=new ModifyBookingFrame(currentUser);

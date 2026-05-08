@@ -46,6 +46,7 @@ public class User implements Serializable {
 	public boolean makeBooking(Booking book) {
 		if (nOb < bookList.length) {
 			bookList[nOb++] = book;
+			book.setBookingId(nOb);
 			return true;
 		}
 		return false;
@@ -65,9 +66,11 @@ public class User implements Serializable {
 	public boolean deleteBooking(int id) {
 		for (int i = 0; i < nOb; i++) {
 			if (bookList[i].getBookingId() == id) {
-				for (int j = i; j < nOb - 1; j++)
+				for (int j = i; j < nOb - 1; j++) 
 					bookList[j] = bookList[j + 1];
 				bookList[--nOb] = null;
+				for (int k = 0; k < nOb; k++) 
+	                bookList[k].setBookingId(k + 1);
 				return true;
 			}
 		}

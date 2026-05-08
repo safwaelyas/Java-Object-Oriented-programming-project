@@ -6,7 +6,7 @@ import core.payable;
 public class Booking implements payable, Serializable {
 	//declaring variables
 	private final double CarTax=500;//Tax added in case of choosing a car rental service.
-	public static int counter=1;//counter placed in the Booking ID.
+	
 	private int bookingId;//For each Booking,so the user chooses the service based on the ID
 	private LocalDate date;//a class represents the actual date when the user add a Booking to his array.
 	private String status;//the state of the Booking if it not\COnfirmed or Canceled
@@ -17,7 +17,7 @@ public class Booking implements payable, Serializable {
 
 	//default constructor.
 		public Booking() {
-	bookingId=counter++;
+	bookingId=0;
 	LocalDate today = LocalDate.now();
 	date=today;
 	status="Not confirmed";
@@ -100,6 +100,9 @@ public class Booking implements payable, Serializable {
 	public int getBookingId() {//getter for the ID of the book.
 			return bookingId;
 		}
+	public void setBookingId(int id) {
+		bookingId=id;
+	}
 
 		public int getNumberOfServices() {//getter of number of services in each Book
 			return nOs;
