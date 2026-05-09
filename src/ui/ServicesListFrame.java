@@ -469,19 +469,27 @@ public class ServicesListFrame extends JFrame {
 
 		
 		JLabel forRoomType = new JLabel("");
+		forRoomType.setForeground(new Color(255, 0, 0));
+		forRoomType.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		forRoomType.setBounds(10, 195, 131, 14);
 		contentPane.add(forRoomType);
 		
 		JLabel forNegativeOrZeroights = new JLabel("");
+		forNegativeOrZeroights.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		forNegativeOrZeroights.setForeground(new Color(255, 0, 0));
 		forNegativeOrZeroights.setBounds(10, 214, 131, 14);
 		contentPane.add(forNegativeOrZeroights);
 		
 		JLabel forCarType = new JLabel("");
+		forCarType.setForeground(new Color(255, 0, 0));
+		forCarType.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		forCarType.setBounds(161, 195, 108, 14);
 		contentPane.add(forCarType);
 		
 		JLabel forNegativeZerodays = new JLabel("");
-		forNegativeZerodays.setBounds(161, 214, 88, 14);
+		forNegativeZerodays.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		forNegativeZerodays.setForeground(new Color(255, 0, 0));
+		forNegativeZerodays.setBounds(161, 214, 131, 14);
 		contentPane.add(forNegativeZerodays);
 		
 		JLabel forUnSelectedClass = new JLabel("");
@@ -489,10 +497,14 @@ public class ServicesListFrame extends JFrame {
 		contentPane.add(forUnSelectedClass);
 		
 		JLabel forNonMonthDays = new JLabel("");
-		forNonMonthDays.setBounds(313, 233, 123, 14);
+		forNonMonthDays.setForeground(new Color(255, 0, 0));
+		forNonMonthDays.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		forNonMonthDays.setBounds(273, 233, 163, 14);
 		contentPane.add(forNonMonthDays);
 		JLabel NoFlightTypeselected = new JLabel("");
-		NoFlightTypeselected.setBounds(313, 251, 123, 14);
+		NoFlightTypeselected.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		NoFlightTypeselected.setForeground(new Color(255, 0, 0));
+		NoFlightTypeselected.setBounds(273, 251, 163, 14);
 		contentPane.add(NoFlightTypeselected);
 		
 		

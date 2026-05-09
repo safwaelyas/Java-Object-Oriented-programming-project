@@ -56,7 +56,9 @@ public class ChangeBookinkStatusFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(77, 168, 288, 14);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		lblNewLabel.setForeground(new Color(255, 0, 0));
+		lblNewLabel.setBounds(34, 168, 355, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblCancelbookingService = new JLabel("Change Booking Status Service");

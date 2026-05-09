@@ -1,4 +1,5 @@
 package ui;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -11,11 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import model.User;
-import java.awt.Color;
 
 public class ModifyBookingFrame extends JFrame {
 
@@ -85,13 +84,13 @@ public class ModifyBookingFrame extends JFrame {
 				if(group.getSelection()==null) {
 					JOptionPane.showMessageDialog(ModifyBookingFrame.this, "You need to select a booking to modify first...");
 				}
-				else { if(group.getSelection()==rdbtnNewRadioButton)
+				else {  if(rdbtnNewRadioButton.isSelected())
 					n=1;
-				else if(group.getSelection()==rdbtnNewRadioButton_1)
+				else if(rdbtnNewRadioButton_1.isSelected())
 					n=2;
 				else n=3;
 				
-				if(currentUser.findBooking(3)==null) 
+				if(currentUser.findBooking(n)==null) 
 					JOptionPane.showMessageDialog(ModifyBookingFrame.this, "Booking with this number not found");
 				else {
 					ServicesListFrame ServiceFrame=new ServicesListFrame(currentUser,n);
@@ -113,13 +112,13 @@ public class ModifyBookingFrame extends JFrame {
 				if(group.getSelection()==null) {
 					JOptionPane.showMessageDialog(ModifyBookingFrame.this, "You need to select a booking to modify first...");
 				}
-				else { if(rdbtnNewRadioButton.isSelected())
+				else {  if(rdbtnNewRadioButton.isSelected())
 					n=1;
 				else if(rdbtnNewRadioButton_1.isSelected())
 					n=2;
 				else n=3;
 				
-				if(currentUser.findBooking(3)==null) 
+				if(currentUser.findBooking(n)==null) 
 					JOptionPane.showMessageDialog(ModifyBookingFrame.this, "Booking with this number not found");
 				else {
 				DeleteServiceFrame frame_dS=new DeleteServiceFrame(currentUser,n);

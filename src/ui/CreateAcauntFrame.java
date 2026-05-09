@@ -74,7 +74,9 @@ public class CreateAcauntFrame extends JFrame {
 		textField_pass.setColumns(10);
 
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(53, 192, 362, 14);
+		lblNewLabel_1.setForeground(new Color(255, 0, 0));
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		lblNewLabel_1.setBounds(47, 190, 362, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnNewButton_1 = new JButton("sign up  ");

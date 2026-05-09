@@ -74,7 +74,8 @@ public class SingInFrame extends JFrame {
 		contentPane.add(textField_1);
 		
 		JLabel lblinvalid_or_noaccountfound = new JLabel("");
-		lblinvalid_or_noaccountfound.setBounds(59, 55, 332, 14);
+		lblinvalid_or_noaccountfound.setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		lblinvalid_or_noaccountfound.setBounds(23, 55, 390, 14);
 		contentPane.add(lblinvalid_or_noaccountfound);
 		
 		JLabel lblSignIn = new JLabel("Welcom To Book with us System, Login to your account");

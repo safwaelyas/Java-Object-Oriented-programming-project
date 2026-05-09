@@ -15,6 +15,8 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import core.BookWithUs;
+import model.Booking;
 import model.User;
 
 public class DeleteServiceFrame extends JFrame {
@@ -46,7 +48,7 @@ public class DeleteServiceFrame extends JFrame {
 	public DeleteServiceFrame(User u,int n) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\safsa\\Downloads\\icons8-gui-64.png"));
 		currentUser=u;
-		BookingNumber=n;
+		Booking BookToModify=u.findBooking(n);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -62,8 +64,9 @@ public class DeleteServiceFrame extends JFrame {
 		contentPane.add(contentPane_1);
 		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		lblNewLabel.setForeground(Color.RED);
-		lblNewLabel.setBounds(189, 143, 48, 14);
+		lblNewLabel.setBounds(47, 143, 348, 14);
 		contentPane_1.add(lblNewLabel);
 		
 		JLabel lblDeleteService = new JLabel("Delete Service");
@@ -108,19 +111,19 @@ public class DeleteServiceFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int serviceId=0;
 				boolean ServiceDeleted=false;
-				JRadioButton selectedB=(JRadioButton)group.getSelection();
-				if(selectedB==null) {
+				if(group.getSelection()==null) {
 					lblNewLabel.setText("need to select an option first..."); 
 				}
 				else {
-				if(selectedB==rdbtnNewRadioButton) 
+				if(rdbtnNewRadioButton.isSelected()) 
 				serviceId = 1;
-				else if(selectedB==rdbtnNewRadioButton_1)
+				else if(rdbtnNewRadioButton_1.isSelected())
 					serviceId = 2;
 				else
 					serviceId = 3;
-				ServiceDeleted=currentUser.findBooking(BookingNumber).DeleteService(serviceId);
+				ServiceDeleted=BookToModify.DeleteService(serviceId);
 				if(ServiceDeleted) {
+					BookWithUs.saveUsers();
 					JOptionPane.showMessageDialog(DeleteServiceFrame.this, "Service deleted successfully!");	
 					BookingOptionsFrame frame_bO=new BookingOptionsFrame(currentUser);
 					frame_bO.setVisible(true);

@@ -48,7 +48,9 @@ public class BookingOptionsFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(39, 227, 348, 14);
+		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblNewLabel.setBounds(39, 244, 348, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("What would you like to do?");
