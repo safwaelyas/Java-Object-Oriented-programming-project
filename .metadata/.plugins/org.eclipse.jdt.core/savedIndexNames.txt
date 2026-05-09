@@ -1,1 +1,0 @@
-INDEX VERSION 1.134+C:\Users\safsa\Desktop\Java2project\.metadata\.plugins\org.eclipse.jdt.core
