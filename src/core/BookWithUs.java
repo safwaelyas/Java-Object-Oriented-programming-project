@@ -1,14 +1,4 @@
-/* Students information:
-1- ARWA SAADAN ABDULLAH AL-SAADAN./ ID: 446201958.
-2- SAFWA MOHAMEDAHMED ELYAS ABDALLA./ ID:446207694.
-3- Dina Ibrahim Alyabis./ ID:446202768.
-
-SECTION NUMBER:46412
-Lab INUSTRUCTUR: Ghada Abdullah S Alamer.
-*/
-//Class with the main method implemented.
-
-
+// Book With Us - course project
 
 package core;
 
@@ -33,7 +23,7 @@ public class BookWithUs {
     		  e.printStackTrace();
     	}
     }
-
+//method to empty the file data.
     public static void clearUsersFile() {
         try {
             new FileOutputStream("users.dat").close();
@@ -41,7 +31,7 @@ public class BookWithUs {
             System.out.println("Could not clear file.");
         }
     }
-
+//method to lad the users at the beginning of the program
     public static void loadUsers()throws IOException {
     	 ObjectInputStream ois = null;
         try {
@@ -67,6 +57,7 @@ public class BookWithUs {
                  ois.close();
         }
     }
+    //method that save updated users data in the file
 
     public static void saveUsers() {
         try {
@@ -108,6 +99,9 @@ public class BookWithUs {
         return false;
     }
 
+    
+    //helper methods for frames button actions 
+   //method cancel booking
     public static boolean CancelBooking(int n, User u) {
         boolean isCancelled = u.cancelBooking(n);
         if (isCancelled) {
@@ -117,6 +111,7 @@ public class BookWithUs {
             return false;
         }
     }
+    //method confirm booking
 
     public static boolean ConfirmBooking(int n, User u) {
         boolean isConfirmed = u.confirmBooking(n);
@@ -127,6 +122,8 @@ public class BookWithUs {
             return false;
         }
     }
+    
+    //method delete booking
 
     public static boolean DeleteBooking(int n, User u) {
         boolean bookingDeleted = u.deleteBooking(n);
@@ -137,7 +134,9 @@ public class BookWithUs {
             return false;
         }
     }
-	
+    
+    //method make booking
+
 	public static boolean makeBookUser(User u,Booking b) {
 		if(b.getNumberOfServices()>0) {
 			u.makeBooking(b);
@@ -146,13 +145,12 @@ public class BookWithUs {
 		else
 			return false;
 	}
-	//safwa \ 12345678A
-	//zainab \ 12345678A
-	//sara \12345678A
-	
 
+	
 	public static void main(String[] args)throws IOException {
 		//clearUsersFile();	
+		
+		//initiates the programe at the sign in frame.....
 		SingInFrame frame1 = new SingInFrame();
 		frame1.setVisible(true);
 		

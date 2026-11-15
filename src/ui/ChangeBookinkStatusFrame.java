@@ -45,7 +45,7 @@ public class ChangeBookinkStatusFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public ChangeBookinkStatusFrame(User u) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\safsa\\Downloads\\icons8-gui-64.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("icons8-gui-64.png"));
 		currentUser=u;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

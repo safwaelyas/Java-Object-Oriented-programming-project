@@ -46,7 +46,7 @@ public class DeleteServiceFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public DeleteServiceFrame(User u,int n) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\safsa\\Downloads\\icons8-gui-64.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("icons8-gui-64.png"));
 		currentUser=u;
 		Booking BookToModify=u.findBooking(n);
 		
